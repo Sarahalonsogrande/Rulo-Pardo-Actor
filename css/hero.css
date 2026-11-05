@@ -1,0 +1,78 @@
+/* ==========================================
+    * HERO TITLE
+   ========================================== */
+
+.hero {
+    view-timeline-name: --hero-title;
+
+    overflow: clip;
+    opacity: 0;
+
+    /* z-index: 0; */
+
+    animation: fade-in-up .8s .3s var(--ease-out-back) forwards;
+
+    /* [data-view-transition] {
+        opacity: 1;
+        animation: none;
+        transform: translateY(0);
+    } */
+
+    @media(prefers-reduced-motion: no-preference) {
+        position: sticky;
+        top: 0;
+        transform: translateY(100%);
+    }
+
+    .hero-inner {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        inline-size: max-content;
+        gap: var(--space-m);
+        padding-inline: 0;
+        padding-block: 0;
+
+
+        @media(prefers-reduced-motion: no-preference) {
+            view-transition-name: hero-title;
+
+            @supports(animation-timeline: view(y)) {
+                animation-timeline: --hero-title;
+
+                animation-range: entry 100lvh entry 150lvh, entry 150lvh entry 151lvh;
+                animation-fill-mode: both;
+                animation-name: scroll-left, clip;
+                animation-timing-function: var(--ease-elastic-3);
+            }
+        }
+
+        .hero-title-text,
+        .hero-title-number {
+            padding-block-end: .25em;
+
+            font-family: "Roboto Flex", system-ui, sans-serif;
+            font-size: max(3.33px, 9.3055555555vw);
+            font-weight: var(--font-weight-6);
+            line-height: var(--font-lineheight-00);
+            text-transform: uppercase;
+            color: var(--accent-5);
+            white-space: nowrap;
+            padding: -4rem;
+            @media(prefers-reduced-motion: no-preference) {
+                @supports(animation-timeline: view(y)) {
+                    animation-timeline: --hero-title;
+                    animation-name: vf-size-title;
+                    animation-range: entry 100lvh entry 115lvh;
+                    animation-fill-mode: both;
+                    transform-origin: center;
+                    font-variation-settings: "YTUC" 760, "YFI" 560;
+                }
+            }
+        }
+
+        .hero-title-number {
+            transform: translateY(-5.8%);
+        }
+    }
+}

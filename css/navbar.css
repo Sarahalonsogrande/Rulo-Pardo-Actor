@@ -1,0 +1,160 @@
+/* ==========================================
+    * SITE STICKY NAVBAR
+   ========================================== */
+
+.header {
+    --header-scroll-range: entry 0% cover 110lvh;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+    inline-size: 100%;
+
+    background: antiquewhite;
+    color: var(--text-inverse);
+
+    z-index: 9999;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        inline-size: 100%;
+        block-size: var(--size-px-0);
+
+        background: var(--accent-5);
+
+        animation-timeline: --hero-title;
+        animation-range: entry 100lvh entry 110lvh;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        view-transition-name: header;
+        view-timeline-name: --page-title-header;
+
+        &::before {
+            animation-fill-mode: both;
+            animation-name: header-underline;
+            clip-path: inset(0 100% 0 0);
+        }
+    }
+
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: var(--viewport-2xl);
+        margin: 0 auto;
+        padding-inline: var(--space-xs);
+        padding-block: var(--space-m);
+    }
+
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        opacity: 0;
+        animation: var(--animation-fade-in) both;
+        z-index: 11;
+
+        .header-email {
+            display: none;
+            align-items: center;
+            gap: .5em;
+            padding-left: 1em;
+            height: 1.15em;
+
+            @media (width >=1024px) {
+                display: flex;
+            }
+        }
+    }
+
+    .header-right {
+
+        @media only screen and (min-width: 0px) and (max-width: 1024px) {
+            width: 1.5em;
+            height: 1.5em;
+            position: relative;
+        }
+
+        .header-trigger {
+            position: absolute;
+            display: block;
+            border: none;
+            padding: 0;
+
+            background: none;
+            fill: var(--color-accent);
+
+            z-index: 11;
+
+            transition: fill .3s var(--ease-3);
+
+            @media (width >=1024px) {
+                display: none;
+            }
+
+            .icon {
+                display: block;
+                inline-size: 1.5em;
+                block-size: 1.5em;
+                max-inline-size: 100%;
+                margin-inline-end: auto;
+            }
+        }
+    }
+
+    .header-nav {
+
+        .header-list {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 var(--space-xs);
+            justify-content: space-between;
+            inline-size: 100%;
+            block-size: 100lvh;
+            padding: 8rem var(--space-l);
+
+            list-style-type: "";
+            font-size: var(--font-size-fluid-1);
+            color: var(--surface-fade-nested);
+            background: var(--color-accent);
+            clip-path: inset(0 0 100%);
+            content-visibility: hidden;
+
+            z-index: 10;
+
+            transition: clip-path .3s var(--ease-3), content-visibility .3s var(--ease-3);
+            transition-behavior: allow-discrete;
+
+            @media (width >=1024px) {
+                position: static;
+                inline-size: auto;
+                block-size: auto;
+                padding: 0;
+                gap: var(--size-2);
+                align-items: start;
+                font-size: inherit;
+                color: inherit;
+                background: transparent;
+                clip-path: none;
+                content-visibility: visible;
+                opacity: 0;
+                animation: fade-in 1s .8s var(--ease-3) forwards;
+            }
+
+            .header-item {
+                font-variation-settings: "YTUC" 528;
+                position: relative;
+                z-index: 9999999;
+                /* --background: var(--surface-fade-dark); */
+            }
+        }
+    }
+}

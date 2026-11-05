@@ -1,0 +1,646 @@
+/* ==========================================
+    * CASCADE LAYERS ORDER
+   ========================================== */
+/* *--- Declare the cascade Layers order --- */
+@layer tokens, reset, base, typography, layout, components, utilities, overrides;
+
+/* * --- Import external files into their layers --- */
+@import url('./design-tokens.css') layer(tokens);
+@import url('./reset.css') layer(reset);
+@import url('./fonts.css') layer(typography);
+@import url('./buttons.css') layer(components);
+@import url('./hero.css') layer(components);
+@import url('./navbar.css') layer(components);
+@import url('./intro.css') layer(components);
+@import url('./text-typing.css') layer(components);
+
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100..900'); */
+
+/* @import url('./style_copiado.css') layer(components); */
+
+
+/* ==========================================
+    * TOKENS LAYER
+   ========================================== */
+
+/* Semantic Tokens - use these instead of palette values directly */
+@layer tokens {
+    :root {
+        /* * --- BRAND COLORS --- */
+        --color-primary: var(--primary-4);
+        --color-accent: var(--accent-4);
+
+        /* Brand color scales for specific uses */
+        --color-primary-highlight: var(--primary-1);
+        --color-primary-interactive: var(--primary-2);
+        --color-primary-visited: var(--primary-3);
+        --color-accent-highlight: var(--accent-2);
+        --color-accent-interactive: var(--accent-3);
+
+        /* * --- SURFACES --- */
+        --background: var(--neutral-16);
+        --surface: var(--neutral-14);
+        --surface-nested: var(--neutral-12);
+        --surface-inverse: var(--neutral-2);
+        --surface-fade-dark: var(--gradient-fade-dark);
+        --surface-fade-light: var(--gradient-fade-light);
+        --surface-fade-nested: var(--gradient-fade-nested);
+        --surface-glass: var(--glass-gradient);
+
+        /* * --- TEXTS --- */
+        --text: var(--neutral-1);
+        --text-editorial: var(--neutral-2);
+        --text-muted: var(--neutral-6);
+        --text-inverse: var(--neutral-16);
+
+        /* LAYOUT */
+
+        --padding: var(--space-custom-xs-m);
+        --grid-columns: repeat(12, 1fr);
+        --grid-gap: var(--size-3);
+
+        /* * --- TYPOGRAPHY --- */
+        --font-serif: var(--font-family-serif);
+        --font-sans: var(--font-family-system-ui);
+        --font-mono: var(--font-family-monospace-code);
+
+        /* * --- INTERACTION & ACTIONS --- */
+        --action-primary: var(--color-primary-interactive);
+        --action-accent: var(--color-accent-interactive);
+        --focus-color: var(--color-primary-interactive);
+
+        --link: var(--action-primary);
+        --link-hover: var(--action-accent);
+        --link-visited: var(--color-primary-visited);
+
+        /* * --- BORDERS --- */
+        --border-subtle: var(--border-size-1) solid rgb(255 255 255 / 25%);
+        --border-brutal: var(--border-size-2) solid var(--text);
+
+        /*
+         * --- ENVIRONMENT ---
+         * Expose device safe-area values as reusable custom properties.
+         */
+        --safe-top: env(safe-area-inset-top, 0px);
+        --safe-right: env(safe-area-inset-right, 0px);
+        --safe-bottom: env(safe-area-inset-bottom, 0px);
+        --safe-left: env(safe-area-inset-left, 0px);
+
+        interpolate-size: allow-keywords;
+        /* ? ????*/
+
+        --spacing-top: clamp(3rem, 8.3333333333vw, 10rem);
+        --spacing-top-small: clamp(2rem, 5.5555555556vw, 6.6666666667rem);
+        --max-width: 1920px;
+        --default-ease: var(--ease-out-quart);
+        --bouncy-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --header-height: 6.25rem;
+        --border-radius: 0.5rem;
+        --clip-top: 6.9444444444vw;
+
+        --color-background: seashell;
+
+        --highlight-color: #e2fc91;
+        --heading-height: 6.25rem;
+    }
+}
+
+/* ==========================================
+    * BASE LAYER
+   ========================================== */
+
+/* Global defaults for typography, links, focus and selection */
+@layer base {
+    html {
+        timeline-scope: --hero-title, --footer-page-title;
+        scroll-timeline: --page-scroll;
+
+        color-scheme: light dark;
+
+        scrollbar-gutter: stable;
+        scroll-behavior: smooth;
+        scroll-behavior: auto !important;
+    }
+
+    html,
+    body {
+        block-size: auto;
+    }
+
+    body {
+        /* block-size: 400dvh; */
+
+        font-family: "Google Sans Flex", var(--font-sans), sans-serif;
+        font-size: var(--size-px-3);
+        color: var(--text);
+        line-height: var(--font-lineheight-3);
+        background-color: antiquewhite;
+
+        overflow-x: clip;
+        /* ? hidden */
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: var(--font-family-geometric-humanist);
+        font-optical-sizing: auto;
+        font-weight: var(--font-weight-5);
+        line-height: var(--font-lineheight-1);
+    }
+
+    h1 {
+        font-size: var(--font-size-fluid-3);
+        line-height: var(--font-lineheight-0);
+    }
+
+    h2 {
+        font-size: var(--font-size-fluid-2);
+    }
+
+    h3 {
+        font-size: var(--font-size-fluid-1);
+    }
+
+    p {
+        max-inline-size: var(--size-content-3);
+    }
+
+    a {
+        color: var(--link);
+        text-decoration: none;
+
+        &:visited {
+            color: var(--link-visited);
+        }
+    }
+
+    :focus-visible {
+        outline: var(--border-size-2) solid var(--focus-color);
+        outline-offset: var(--size-px-1);
+    }
+
+    ::selection {
+        background-color: var(--color-primary-highlight);
+        color: var(--text-inverse);
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+
+        li {
+            padding: 0;
+        }
+    }
+}
+
+/* ==========================================
+    * LAYOUT LAYER
+   ========================================== */
+
+/* Page structure, containers, grids and spacing */
+@layer layout {
+
+    /*
+     * FULL BLEED
+     * Keeps regular content within a centered column while allowing selected elements to span the full width.
+     */
+    .full-bleed-grid {
+        display: grid;
+        grid-template-columns:
+            1fr min(var(--viewport-md), 100%) 1fr;
+
+        &>* {
+            /* Default: Place regular children in the central column */
+            grid-column: 2;
+        }
+
+        .full-bleed {
+            /* Span all three columns */
+            grid-column: 1 / -1;
+        }
+    }
+}
+
+/* ==========================================
+    * COMPONENTS LAYER
+   ========================================== */
+
+/* Styles for reusable interface components */
+@layer components {
+    .main {
+        position: relative;
+        block-size: 300dvh;
+        background-color: antiquewhite;
+
+        @media (prefers-reduced-motion: no-preference) {
+            view-transition-name: main;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -3rem;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: antiquewhite;
+            z-index: -1;
+        }
+    }
+
+    .page-content {
+        background: antiquewhite;
+
+        @media (prefers-reduced-motion: no-preference) {
+            view-transition-name: page-content;
+        }
+    }
+
+    /**************************/
+
+
+    /**************************/
+
+
+    /**************************/
+
+    .page-title-dramatic {
+        font-family: "Roboto Flex", system-ui, sans-serif;
+        color: var(--text-editorial);
+        font-size: var(--font-size-dramatic);
+        font-weight: 900;
+        line-height: var(--font-lineheight-0);
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .page-title-lg {
+        font-family: "roboto Flex", system-ui, sans-serif;
+        font-size: max(5rem, 13.9583333333vw);
+        font-weight: var(--font-weight-7);
+        line-height: var(--font-lineheight-0);
+        text-transform: uppercase;
+    }
+
+    .page-title-md {
+        font-size: var(--font-size-fluid-5);
+        color: var(--color-accent-highlight);
+        text-transform: uppercase;
+        letter-spacing: var(--font-letterspacing-4);
+        font-weight: var(--font-weight-5);
+
+        /* &::before {
+            content: '#';
+            margin-inline-end: var(--space-xs);
+        } */
+    }
+
+    .page-title-sm {
+        font-size: var(--font-size-fluid-1);
+        font-weight: var(--font-weight-4);
+        letter-spacing: var(--font-letterspacing-1);
+        line-height: var(--font-lineheight-00);
+        text-transform: uppercase;
+    }
+
+    .text-emphasize {
+        max-inline-size: var(--size-content-4);
+        margin-inline: auto;
+        text-align: justify;
+        font-size: var(--font-size-fluid-2);
+        line-height: var(--font-lineheight-2);
+        font-weight: var(--font-weight-5);
+        letter-spacing: var(--font-letterspacing-0);
+        color: var(--text-muted);
+
+        span {
+            color: var(--color-primary-highlight);
+        }
+    }
+
+    .text-descriptions {
+        color: var(--text-inverse);
+        font-size: var(--font-size-fluid-1);
+        line-height: var(--font-lineheight-1);
+        /* font-weight: var(--font-weight-4); */
+    }
+
+    .page-container {
+        --flow-space: var(--space-l);
+
+        content-visibility: auto;
+        contain-intrinsic-size: 1280px;
+
+        display: grid;
+        align-items: center;
+        inline-size: min(calc(100% - 2rem), var(--viewport-xl));
+        inline-size: 100%;
+        block-size: 200dvh;
+        margin-inline: auto;
+        padding-inline: var(--space-m);
+        padding-block: var(--space-xl);
+
+        background-color: antiquewhite;
+    }
+
+    .contact-content,
+    .form-content {
+        margin-inline: auto;
+        margin-block-start: var(--space-xl);
+        padding-inline: var(--space-m);
+        padding-block: var(--space-m) 0;
+
+        border: var(--border-subtle);
+        border-radius: var(--radius-3);
+        box-shadow: var(--shadow-3);
+    }
+
+    /* Badge */
+    .badge {
+        display: inline-block;
+        margin-block-end: var(--size-4);
+        padding-inline: var(--space-s);
+        padding-block: var(--space-3xs);
+
+        color: var(--text-inverse);
+        font-size: var(--font-size-fluid--3);
+        font-weight: var(--font-weight-8);
+        letter-spacing: var(--font-letterspacing-4);
+        text-align: center;
+        text-transform: uppercase;
+        background-color: var(--color-accent-highlight);
+    }
+
+    /* Media / reel */
+    .media {
+        border-radius: var(--radius-3);
+
+        overflow: hidden;
+    }
+}
+
+/* ==========================================
+    * UTILITIES LAYER
+   ========================================== */
+
+/* Small reusable classes for common patterns */
+@layer utilities {
+
+    /* --- Flow spacing ---
+        Adds space between adjacent siblings
+    */
+    .flow>*+* {
+        margin-block-start: var(--flow-space, var(--size-5));
+    }
+
+    .horizontal-flow>*+* {
+        margin-inline-start: var(--flow-space, var(--size-5));
+    }
+
+    /* Visually hidden (accessibility) */
+    .sr-only {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        margin: -1px;
+
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        overflow: hidden;
+    }
+
+    /* Simple helpers */
+    .text-center {
+        text-align: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .sticky {
+        position: sticky;
+        inset-block-start: 0;
+
+        z-index: var(--z-important);
+    }
+}
+
+/* ==========================================
+    * OVERRIDES LAYER
+   ========================================== */
+
+/* Last-resort styles that intentionally take priority */
+@layer overrides {}
+
+/* ==========================================
+    * PREFERS-REDUCED-MOTION
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/*
+@media only screen and (min-width: 0px)and (max-width: 1024px) {
+    :root {
+        --grid-columns: repeat(6, 1fr);
+        --grid-gap: 0.5rem
+    }
+}
+
+@media only screen and (min-width: 0px)and (max-width: 1280px) {
+    :root {
+        --block-content-columns: 3 / span 8
+    }
+}
+
+@media only screen and (min-width: 0px)and (max-width: 1024px) {
+    :root {
+        --block-content-columns: 2 / span 4
+    }
+}
+
+@media only screen and (min-width: 0px)and (max-width: 750px) {
+    :root {
+        --block-content-columns: 1 / span 6
+    }
+} */
+
+/* ==========================================
+   * CROSS-DOCUMENT VIEW TRANSITIONS
+   ========================================== */
+
+/* @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+    @view-transition {
+        navigation: auto;
+    }
+} */
+@view-transition {
+    navigation: auto;
+}
+
+/* ------------------------------------------
+   * CUSTOM KEYFRAMES
+   ------------------------------------------ */
+
+@keyframes scroll-left {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(min(-40vw, -20% + 100vw));
+    }
+}
+
+@keyframes clip {
+    from {
+        clip-path: inset(0 0 0);
+    }
+
+    to {
+        clip-path: inset(0 0 100%);
+    }
+}
+
+@keyframes vf-size-title {
+    from {
+        font-variation-settings: "YTUC" 760, "YTFI" 560;
+    }
+
+    to {
+        font-variation-settings: "YTUC" 528, "YTFI" 788;
+    }
+}
+
+@keyframes move-in {
+    0% {
+        transform: translateX(var(--from, -50%));
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes header-underline {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@keyframes animate-border-radius {
+    0% {
+        clip-path: inset(16px 0 0 0 round 35vw 0 0 0);
+        opacity: 1;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0 round 35vw 0 0 0);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes breathe-2 {
+
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -0.5rem;
+    }
+}
+
+@keyframes scale-in {
+    0% {
+        scale: 0;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+
+@keyframes scale-in-media {
+    from {
+        scale: 1;
+    }
+
+    to {
+        scale: 1.1;
+        transform-origin: bottom left;
+    }
+}
+
+@keyframes move-in-sight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes move-in {
+    from {
+        transform: translateX(var(--from, -50%));
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-up-text {
+    from {
+        opacity: 0;
+        transform: translateY(2em);
+    }
+}
+
+@keyframes title-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes image-out {
+    to {
+        opacity: 0;
+        transform: translateX(-6px) scale(0.99);
+    }
+}

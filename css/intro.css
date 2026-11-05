@@ -1,0 +1,343 @@
+.intro-header {
+    view-timeline-name: --intro-header;
+
+    --medium-delay: var(--duration-moderate-1);
+    --short-delay: var(--duration-quick-1);
+
+    position: relative;
+    padding-inline: var(--space-custom-s-l);
+    padding-block: var(--size-11) 0;
+
+    overflow: clip;
+
+    @media ((width >=768px) or ((orientation: landscape) and (width < 1024px))) {
+        padding-block-start: clamp(2rem, 7.7777777778vw, 9.3333333333rem);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        view-transition-name: intro-header;
+    }
+
+    .intro-header-inner {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: auto auto auto;
+        gap: var(--space-3xs);
+
+        @media ((width >=768px) or ((orientation: landscape) and (width < 1024px))) {
+            grid-template-rows: 1fr 1fr;
+            align-items: end;
+        }
+
+        @media (width >=1024px) {
+            grid-template-columns: repeat(12, 1fr);
+            gap: max(1rem, 1.6666666667vw) var(--grid-gap);
+        }
+
+        .intro-header-titles {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--grid-gap);
+
+            grid-column: 1 / -1;
+            /* grid-row: 2; */
+
+            z-index: 1;
+
+            @media ((width >=768px) or ((orientation: landscape) and (width < 1024px))) {
+                grid-row: 1;
+            }
+
+            @media (width >=1024px) {
+                block-size: 100%;
+            }
+
+            .intro-header-title {
+                animation: none;
+
+                @media ((width >=768px) or ((orientation: landscape) and (width < 1024px))) {
+                    grid-column: span 2;
+                }
+
+                @media (width >=1024px) {
+                    grid-column: span 4;
+                }
+
+                @media(prefers-reduced-motion: no-preference) {
+                    animation: move-right 1s var(--default-ease) both;
+
+                    @supports(animation-timeline: view(y)) {
+                        animation-timeline: --hero-title;
+                        animation-range: entry 100lvh entry 150lvh;
+                        animation-fill-mode: both;
+                    }
+                }
+            }
+
+            .intro-header-title--right {
+                grid-column-start: 2;
+                grid-row: 2;
+
+                display: flex;
+                flex-direction: column;
+                gap: 1.25rem;
+                padding: .5rem;
+
+                @media ((width >=768px) or ((orientation: landscape) and (width < 1024px))) {
+                    grid-column: span 3 / -4;
+                }
+
+                @media (width >=1024px) {
+                    grid-column: span 5 / -7;
+                }
+
+                .tw-line {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    width: 0;
+                    margin: 0;
+                    font-family: "DM Mono", "Fira Code", Consolas, monospace;
+                    border-right: 2px solid #b8ff57;
+
+                    animation:
+                        typing-text 5.8s steps(18) infinite,
+                        blink-cursor .7s step-end infinite alternate;
+                }
+            }
+
+            span,
+            em {
+                letter-spacing: clamp(-0.015em, (1em - 1.5rem) / -10, 0em);
+                font-size: 8.3333333333vw;
+                line-height: 1;
+                color: var(--accent-5);
+            }
+        }
+
+        .intro-header-media {
+            position: relative;
+            grid-column: 1 / -1;
+            grid-row: 1;
+
+            aspect-ratio: 514 / 594;
+            overflow: visible;
+            margin-right: calc(var(--padding) * -1);
+            --from: -100%;
+
+            @media ((width >=768px) or ((orientation: landscape) and (width < 1024px))) {
+                grid-column: span 2 / -1;
+                grid-row: 1 / -1;
+            }
+
+            @media (width >=1024px) {
+                grid-column: span 6 / -1;
+                grid-row: 1 / span 2;
+            }
+
+            @media (prefers-reduced-motion: no-preference) {
+                animation: move-in 1s var(--default-ease) both;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                inline-size: 120%;
+                block-size: 100%;
+
+                background: var(--color-accent);
+
+                animation: none;
+                clip-path: inset(16px 0 0 0 round 35vw 0 0 0);
+
+                z-index: 0;
+
+                @media ((width >=768px) or ((orientation: landscape) and (width < 1024px))) and (prefers-reduced-motion: no-preference) {
+                    animation: animate-border-radius 1s var(--default-ease) both;
+
+                    @supports (animation-timeline: view(y)) {
+                        animation-timeline: --hero-title;
+                        animation-range: entry 100lvh entry 150lvh;
+                        animation-fill-mode: both;
+                    }
+                }
+            }
+
+            .media-container {
+                mask-image: var(--mask-image);
+                mask-size: cover;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                aspect-ratio: 463 / 798;
+                inline-size: 85%;
+                overflow: clip;
+
+                z-index: 1;
+
+                animation: none;
+
+                @media ((width >=768px) or ((orientation: landscape) and (width < 1024px))) and (prefers-reduced-motion: no-preference) {
+                    animation: scale-in-media 1s var(--default-ease) both;
+
+                    @supports(animation-timeline: view(y)) {
+                        animation-timeline: --hero-title;
+                        animation-range: entry 100lvh entry 150lvh;
+                        animation-fill-mode: both;
+                    }
+                }
+
+                img {
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    width: 90%;
+                    height: auto;
+                    object-fit: cover;
+                    --from: -30%;
+
+                    @media (prefers-reduced-motion: no-preference) {
+                        animation: move-in 1s var(--duration-quick-1) var(--ease-elastic-2) both;
+                    }
+                }
+            }
+        }
+
+        .intro-header-text {
+            grid-column: 1 / -1;
+            grid-row: 3;
+            max-inline-size: var(--size-content-3);
+            margin-inline: 0 auto;
+
+            p+p {
+                margin-block-start: var(--space-2xs);
+            }
+
+            @media ((width >=768px) or ((orientation: landscape) and (width < 1024px))) {
+                grid-column: -6 / span 3;
+                grid-row: 2;
+
+            }
+
+            @media (width >=1024px) {
+                grid-column: -12 / span 5;
+            }
+
+            @media(prefers-reduced-motion: no-preference) {
+                animation: fade-in-up-text 1s var(--short-delay) var(--default-ease) both;
+            }
+        }
+    }
+}
+
+@keyframes typing-text {
+
+    0%,
+    90%,
+    100% {
+        width: 0ch;
+    }
+
+    30%,
+    60% {
+        width: 7ch;
+    }
+}
+
+@keyframes blink-cursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.typing {
+    display: inline-block;
+    width: calc(var(--text-length) * 1ch);
+
+    font-family: 'Roboto Flex', monospace;
+    white-space: pre;
+    border-right: 3px solid #000;
+    overflow: hidden;
+
+    animation:
+        typing-text 4s steps(var(--text-length)) infinite alternate,
+        blinking-cursor 0.8s step-end infinite;
+
+    &::before {
+        content: var(--typing-text);
+    }
+}
+
+@keyframes typing-text {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes blinking-cursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.contenedor-maquina {
+  display: inline-grid; /* Alinea las frases una encima de otra en el mismo sitio */
+  font-family: 'Roboto Flex', monospace;
+  font-size: 32px;
+  font-variation-settings: "wdth" 85; /* Ajuste para homogeneizar el ancho de las letras */
+}
+
+.frase {
+  grid-area: 1 / 1; /* Hace que todas ocupen exactamente el mismo espacio */
+
+  white-space: pre;
+  overflow: hidden;
+  border-right: 3px solid #000;
+  width: 0;
+  opacity: 0;
+
+  /* Definimos la duración total del show completo (12s) */
+  animation:
+    escribir-borrar 4s steps(var(--letras)) forwards,
+    parpadeo-cursor 0.8s step-end infinite,
+    visibilidad 12s infinite; /* El bucle global de 12 segundos */
+
+    &::before {
+        content: var(--texto);
+    }
+}
+
+/* --- ESCALONAMIENTO DE TIEMPOS (Delays) --- */
+.f-1 {
+  animation-delay: 0s, 0s, 0s;
+}
+
+.f-2 {
+  /* Se activa justo cuando la primera frase termina (a los 4 segundos) */
+  animation-delay: 4s, 4s, 4s;
+}
+
+.f-3 {
+  /* Se activa cuando la segunda termina (a los 8 segundos) */
+  animation-delay: 8s, 8s, 8s;
+}
+
+/* --- ANIMACIONES --- */
+
+/* 1. Escribe la palabra y luego la vuelve a encoger a 0 */
+@keyframes escribir-borrar {
+  0%, 100% { width: 0; }
+  30%, 70% { width: calc(var(--letras) * 1ch); } /* Mantiene la palabra visible un rato */
+}
+
+/* 2. Controla cuándo aparece y desaparece cada frase en el bloque de 12s */
+@keyframes visibilidad {
+  0%, 33.32% { opacity: 1; }  /* Visible durante su tercio de tiempo */
+  33.33%, 100% { opacity: 0; } /* Invisible el resto del tiempo */
+}
+
+/* 3. El clásico parpadeo de la barra */
+@keyframes parpadeo-cursor {
+  50% { border-color: transparent; }
+}

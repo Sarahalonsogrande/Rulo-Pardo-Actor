@@ -1,0 +1,102 @@
+/* ==========================================
+   * BUTTONS
+   ========================================== */
+
+.button {
+    /* Layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--size-2);
+
+    /* Box */
+    padding-block: var(--size-3);
+    padding-inline: var(--size-5);
+    border: 1px solid currentColor;
+    border-radius: 0;
+
+    /* Typography */
+    font: inherit;
+    font-size: var(--font-size-1);
+    font-weight: var(--font-weight-6);
+    line-height: 1.2;
+    text-decoration: none;
+
+    /* Appearance */
+    color: var(--text);
+    background: transparent;
+    cursor: pointer;
+
+    /* Interaction */
+    transition:
+        color 180ms ease,
+        background-color 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease;
+}
+
+/* Hover */
+@media (hover: hover) {
+    .button:hover {
+        color: var(--background);
+        background-color: var(--text);
+        border-color: var(--text);
+    }
+}
+
+/* Keyboard focus */
+.button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+/* Press */
+.button:active {
+    transform: translateY(1px);
+}
+
+/* Small */
+.button--small {
+    padding-block: var(--size-2);
+    padding-inline: var(--size-3);
+    font-size: var(--font-size-0);
+}
+
+/* Disabled */
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.button--arrow span {
+    display: inline-block;
+    transition: transform 180ms ease;
+}
+
+@media (hover: hover) {
+    .button--arrow:hover span {
+        transform: translate(2px, -2px);
+    }
+}
+
+.button--pill {
+    border-radius: 999px;
+    padding-inline: var(--size-5);
+}
+
+.button--circle {
+    display: inline-grid;
+    place-items: center;
+
+    inline-size: 3rem;
+    aspect-ratio: 1;
+    padding: 0;
+
+    border-radius: 50%;
+}
+
+/* Variante pequeña */
+.button--circle.button--small {
+    inline-size: 2.25rem;
+    padding: 0;
+}

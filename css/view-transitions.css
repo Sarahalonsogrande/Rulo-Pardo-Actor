@@ -1,0 +1,430 @@
+@media(prefers-reduced-motion: no-preference) {
+    :root {
+        --default-duration: 1.3s;
+        --get-in-place-time: 0.5s;
+        --fade-out-time: 0.3s;
+        --thumb-radius: 8.3333333333vw
+    }
+}
+
+@media(prefers-reduced-motion: no-preference)and (hover: hover)and (min-width: 768px) {
+    :root {
+        --thumb-radius: 50%
+    }
+}
+
+@media(prefers-reduced-motion: no-preference) {
+    main {
+        view-transition-name: main
+    }
+
+    header {
+        view-transition-name: header
+    }
+
+    .page-content {
+        view-transition-name: page-content
+    }
+
+    .homepage-header {
+        view-transition-name: homepage-header
+    }
+
+    [data-view-transition*=to-normal] .work-thumb {
+        view-transition-name: var(--vt);
+        view-transition-class: work-thumb
+    }
+
+    [data-view-transition*=to-archive] .work-thumb,[data-view-transition*=work-detail-to] .work-thumb {
+        view-transition-name: var(--vt);
+        view-transition-class: work-thumb
+    }
+
+    [data-view-transition*=to-archive]::view-transition-group(.work-thumb),[data-view-transition*=work-detail-to]::view-transition-group(.work-thumb) {
+        animation-duration: 0s;
+        animation-delay: 0s
+    }
+
+    [data-view-transition*=to-archive]::view-transition-old(.work-thumb),[data-view-transition*=work-detail-to]::view-transition-old(.work-thumb) {
+        animation-duration: .2s
+    }
+
+    [data-view-transition*=to-archive]::view-transition-new(.work-thumb),[data-view-transition*=work-detail-to]::view-transition-new(.work-thumb) {
+        animation: none
+    }
+
+    ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*) {
+        animation-fill-mode: both !important
+    }
+
+    ::view-transition-group(main) {
+        background: var(--color-background);
+        z-index: 2;
+        animation-timing-function: var(--default-ease);
+        animation-delay: var(--fade-out-time);
+        animation-duration: var(--get-in-place-time)
+    }
+
+    ::view-transition-old(main),::view-transition-new(main) {
+        animation-duration: 0s
+    }
+
+    ::view-transition-group(page-title) {
+        animation-duration: .2s;
+        animation-delay: var(--fade-out-time);
+        animation-timing-function: var(--ease-in-back);
+        overflow: clip;
+        z-index: 2
+    }
+
+    ::view-transition-old(page-title) {
+        animation-name: title-to-up;
+        animation-duration: var(--fade-out-time);
+        animation-delay: 0s;
+        animation-timing-function: var(--ease-in-back);
+        width: auto;
+        height: 100%;
+        object-fit: contain
+    }
+
+    ::view-transition-new(page-title) {
+        animation-name: title-from-down;
+        animation-duration: var(--get-in-place-time);
+        animation-delay: calc(var(--get-in-place-time));
+        animation-timing-function: var(--ease-out-back);
+        width: auto;
+        height: 100%;
+        object-fit: contain
+    }
+
+    ::view-transition-group(selected-work) {
+        animation-delay: .2s;
+        animation-timing-function: var(--default-ease)
+    }
+
+    ::view-transition-old(selected-work),::view-transition-new(selected-work) {
+        animation-duration: .2s
+    }
+
+    ::view-transition-group(.work-thumb) {
+        z-index: 4;
+        animation-duration: var(--fade-out-time);
+        animation-timing-function: var(--default-ease);
+        overflow: clip
+    }
+
+    ::view-transition-old(.work-thumb) {
+        animation-name: fade-out;
+        animation-duration: var(--fade-out-time)
+    }
+
+    ::view-transition-new(.work-thumb) {
+        animation: none
+    }
+
+    ::view-transition-group(header) {
+        z-index: 10;
+        background: var(--color-background);
+        animation-timing-function: var(--default-ease);
+        animation-duration: var(--fade-out-time);
+        animation-delay: var(--fade-out-time)
+    }
+
+    ::view-transition-old(header) {
+        animation-name: fade-out;
+        animation-duration: .3s;
+        animation-delay: .3s;
+        animation-timing-function: var(--default-ease);
+        z-index: 1
+    }
+
+    ::view-transition-new(header) {
+        animation-name: fade-in;
+        opacity: 0;
+        animation-delay: 0s;
+        animation-duration: .3s;
+        animation-timing-function: var(--default-ease)
+    }
+
+    ::view-transition-group(homepage-header) {
+        z-index: 3;
+        animation-duration: var(--fade-out-time);
+        animation-delay: var(--fade-out-time)
+    }
+
+    ::view-transition-old(homepage-header),::view-transition-new(homepage-header) {
+        animation-duration: .2s
+    }
+
+    ::view-transition-old(homepage-header) {
+        animation-delay: 0s
+    }
+
+    ::view-transition-group(page-content) {
+        z-index: 3;
+        animation-duration: var(--fade-out-time);
+        animation-delay: var(--fade-out-time);
+        background: var(--color-background)
+    }
+
+    ::view-transition-old(page-content),::view-transition-new(page-content) {
+        animation-duration: .2s
+    }
+
+    ::view-transition-old(page-content) {
+        animation-delay: 0s
+    }
+
+    [data-view-transition*=to-work-detail]::view-transition-new(page-content) {
+        animation-delay: var(--default-duration)
+    }
+
+    [data-view-transition=work-detail-to-archive]::view-transition-group(.work-thumb) {
+        animation-duration: 0s;
+        animation-delay: .1s
+    }
+
+    [data-view-transition=work-detail-to-archive]::view-transition-old(.work-thumb) {
+        animation-duration: .1s
+    }
+
+    [data-view-transition=work-detail-to-archive]::view-transition-new(.work-thumb) {
+        animation-duration: 0s;
+        animation-delay: .2s
+    }
+
+    ::view-transition-group(header-active-indicator) {
+        z-index: 11;
+        animation-timing-function: var(--default-ease);
+        animation-duration: var(--fade-out-time);
+        animation-delay: var(--fade-out-time)
+    }
+
+    ::view-transition-old(header-active-indicator):only-child {
+        animation-duration: .1s
+    }
+
+    ::view-transition-new(header-active-indicator):only-child {
+        animation-duration: .1s;
+        animation-delay: var(--default-duration)
+    }
+
+    ::view-transition-group(header-box) {
+        animation-delay: .35s;
+        animation-duration: 0s;
+        animation-timing-function: var(--default-ease);
+        z-index: 11
+    }
+
+    ::view-transition-old(header-box) {
+        animation-name: header-box-up;
+        animation-duration: .35s;
+        animation-delay: 0s;
+        animation-timing-function: var(--ease-in-back);
+        animation-fill-mode: both
+    }
+
+    ::view-transition-new(header-box) {
+        animation-duration: 0s;
+        animation-fill-mode: both
+    }
+
+    ::view-transition-old(.work-image),::view-transition-old(.work-no-bg),::view-transition-old(.work-text) {
+        animation-duration: var(--fade-out-time)
+    }
+
+    ::view-transition-group(footer) {
+        z-index: 15;
+        animation-timing-function: var(--default-ease);
+        animation-duration: var(--get-in-place-time)
+    }
+
+    ::view-transition-old(footer),::view-transition-new(footer) {
+        animation-duration: .25s;
+        animation-delay: 0s;
+        animation-timing-function: var(--default-ease)
+    }
+
+    .active-thumb .full-image img,.active-thumb .img-container img {
+        view-transition-name: var(--vt)
+    }
+
+    .active-thumb .img-container img {
+        view-transition-class: work-no-bg
+    }
+
+    .active-thumb .full-image img {
+        view-transition-class: work-image
+    }
+
+    .active-thumb .work-thumb__text {
+        view-transition-name: var(--vt);
+        view-transition-class: work-text
+    }
+
+    [data-view-transition*=to-work-detail] {
+        --get-in-place-time: 0.5s;
+        --fade-out-time: 0.5s
+    }
+
+    [data-view-transition*=to-work-detail]::view-transition-old(root),[data-view-transition*=to-work-detail]::view-transition-new(root),[data-view-transition*=to-work-detail]::view-transition-old(main),[data-view-transition*=to-work-detail]::view-transition-new(main),[data-view-transition*=to-work-detail]::view-transition-group(selected-work),[data-view-transition*=to-work-detail]::view-transition-group(homepage-header) {
+        animation-duration: .2s;
+        animation-timing-function: ease-out
+    }
+
+    [data-view-transition*=to-work-detail]::view-transition-new(page-title) {
+        animation-duration: var(--fade-out-time);
+        animation-delay: var(--default-duration)
+    }
+
+    [data-view-transition*=to-work-detail]::view-transition-group(.work-image) {
+        z-index: 3;
+        animation-duration: .7s;
+        animation-timing-function: var(--default-ease);
+        animation-delay: .3s;
+        overflow: clip
+    }
+
+    [data-view-transition*=to-work-detail]::view-transition-new(.work-image) {
+        opacity: 0;
+        animation: none
+    }
+
+    [data-view-transition*=to-work-detail]::view-transition-old(.work-image) {
+        height: 100%;
+        object-fit: cover;
+        object-position: 0 var(--media-top, 0);
+        border-radius: var(--border-radius);
+        overflow: clip;
+        opacity: 1;
+        animation-name: clip-from-circle;
+        animation-duration: var(--default-duration);
+        animation-delay: 0s;
+        animation-timing-function: var(--default-ease)
+    }
+
+    [data-view-transition*=to-work-detail]::view-transition-group(.work-no-bg) {
+        z-index: 3;
+        animation-duration: .7s;
+        animation-delay: .3s;
+        animation-timing-function: var(--default-ease);
+        overflow: clip
+    }
+
+    [data-view-transition*=to-work-detail]::view-transition-new(.work-no-bg) {
+        opacity: 0;
+        animation: none
+    }
+
+    [data-view-transition*=to-work-detail]::view-transition-old(.work-no-bg) {
+        height: 100%;
+        object-fit: cover;
+        object-position: 0 var(--media-top, 0);
+        opacity: 1;
+        animation-name: clip-from-circle-inner;
+        animation-duration: var(--default-duration);
+        animation-delay: 0s;
+        animation-timing-function: var(--default-ease);
+        clip-path: inset(0 round var(--border-radius-from))
+    }
+
+    [data-view-transition*=to-work-detail]::view-transition-old(.work-image):only-child,[data-view-transition*=to-work-detail]::view-transition-old(.work-no-bg):only-child {
+        animation: fade-out;
+        animation-duration: .3s;
+        animation-delay: 0s;
+        animation-timing-function: var(--default-ease)
+    }
+}
+
+@keyframes clip-from-circle-inner {
+    from {
+        clip-path: inset(0 round var(--border-radius-from))
+    }
+
+    to {
+        clip-path: inset(0 round var(--border-radius))
+    }
+}
+
+@keyframes clip-from-circle {
+    0% {
+        clip-path: inset(0 round 100%)
+    }
+
+    50% {
+        clip-path: inset(0 round var(--border-radius))
+    }
+
+    70% {
+        clip-path: inset(0 round var(--border-radius))
+    }
+
+    100% {
+        clip-path: inset(var(--clip-top) 0 0 round var(--border-radius));
+        transform: translateZ(10px)
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes title-to-up {
+    0% {
+        translate: 0 0
+    }
+
+    99% {
+        translate: 0 -100%;
+        opacity: 1
+    }
+
+    100% {
+        translate: 0 -100%;
+        opacity: 0
+    }
+}
+
+@keyframes title-from-down {
+    0% {
+        transform: translateY(100%);
+        opacity: 0
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+@keyframes header-box-up {
+    0% {
+        transform: translateY(0)
+    }
+
+    99% {
+        transform: translateY(-120%);
+        opacity: 1
+    }
+
+    100% {
+        transform: translateY(-120%);
+        opacity: 0
+    }
+}

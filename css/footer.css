@@ -1,0 +1,105 @@
+.footer {
+    padding-inline: var(--space-xl);
+    padding-block-start: var(--space-l);
+
+    background-color: var(--surface-nested);
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-m);
+        max-inline-size: var(--viewport-xl);
+        margin-inline: auto;
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-s);
+
+            a {
+                display: flex;
+                align-items: center;
+                gap: var(--space-xs);
+
+                color: var(--text-muted);
+                font-size: var(--font-size-fluid--2);
+
+                svg {
+                    inline-size: 1em;
+                    block-size: 1em;
+                }
+
+                &:hover {
+                    color: var(--text);
+                }
+            }
+        }
+
+        .footer-intro {
+            align-items: flex-start;
+
+            a {
+                gap: var(--space-s);
+
+                font-size: var(--font-size-fluid--1);
+
+                &:hover {
+                    color: var(--action-primary);
+                }
+
+            }
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-s);
+        }
+    }
+
+    .footer-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: var(--space-xs);
+        max-inline-size: min(calc(100% - var(--size-3)), var(--viewport-xxl));
+        margin-inline: auto;
+        margin-block-start: var(--space-s);
+        padding-block: var(--space-2xs);
+
+        color: var(--text-muted);
+        font-size: var(--font-size-fluid--3);
+        text-transform: uppercase;
+        letter-spacing: var(--font-letterspacing-2);
+        border-block-start: var(--border-subtle);
+    }
+
+    /* ==========================================
+        * TABLET BLOCK (viewport-md / viewport-lg )
+       ========================================== */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .footer-content {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: var(--space-m);
+
+            .footer-intro {
+                grid-column: 1 / -1;
+            }
+        }
+    }
+
+    /* ==========================================
+        * DESKTOP BLOCK ( viewport-lg )
+       ========================================== */
+    @media (min-width: 1024px) {
+        .footer-content {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            justify-items: center;
+
+            .footer-intro {
+                grid-column: auto;
+            }
+        }
+    }
+}
