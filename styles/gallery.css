@@ -1,0 +1,169 @@
+.carousel {
+  margin: 5rem;
+  padding: 1rem;
+
+  display: grid;
+  gap: 2rem;
+  grid-auto-flow: column;
+  grid-auto-columns: 40%;
+
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  anchor-name: --carousel;
+
+  scroll-marker-group: after;
+
+  &::scroll-marker-group {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  > li {
+    scroll-snap-align: center;
+
+        .gallery-item {
+        height: 250px;
+        scroll-snap-align: center;
+
+        img {
+            object-fit: cover;
+        }
+    }
+
+    &::scroll-marker {
+      content: " ";
+      width: 20px;
+      height: 20px;
+      aspect-ratio: 1 / 1;
+      border-radius: 100%;
+      border: 2px solid CanvasText;
+    }
+
+    &::scroll-marker:target-current {
+      background: LinkText;
+    }
+  }
+
+  &::scroll-button(*) {
+    position: fixed;
+    position-anchor: --carousel;
+    margin: 1rem;
+    font: inherit;
+    background: dodgerblue;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  &::scroll-button(right) {
+    content: "right";
+    position-area: center right;
+  }
+
+  &::scroll-button(left) {
+    content: "left";
+    position-area: center left;
+  }
+}
+
+
+
+/* .gallery-carousel {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+    .gallery-item {
+        scroll-snap-align: center;
+    }
+
+    &::scroll-button(left) {
+        content: "⬅" / "Scroll Left";
+    }
+
+    &::scroll-button(right) {
+        content: "⮕" / "Scroll Right";
+    }
+
+    &::scroll-button(*):focus-visible {
+        outline-offset: 5px;
+
+        scroll-marker-group: after;
+
+        .gallery-item::scroll-marker {
+            content: ' ';
+        }
+
+        .gallery-item::scroll-marker:target-current {
+            background: var(--color-accent);
+        }
+    }
+} */
+/*
+
+.gallery-carousel {
+    display: flex;
+    gap: var(--size-4);
+    inline-size: 100%;
+    min-inline-size: 0;
+    padding-block-end: var(--size-3);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+
+    .gallery-item {
+        flex: 0 0 250px;
+        scroll-snap-align: center;
+        margin: 0;
+
+        img {
+            object-fit: cover;
+        }
+    }
+}
+
+.carousel {
+    display: flex;
+    gap: var(--size-4);
+    inline-size: 100%;
+    min-inline-size: 0;
+    padding-block-end: var(--size-3);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    anchor-name: --carousel;
+
+    columns: 1;
+    block-size: 10lh;
+    text-align: center;
+
+    &::column {
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+}
+
+.carousel--scroll-buttons {
+    &::scroll-button(*) {
+        position: fixed;
+        position-anchor: --carousel;
+        position-visibility: always;
+        font-family: "Material Symbols Outlined";
+    }
+
+    &::scroll-button(right) {
+        position-area: inline-end center;
+        content: 'arrow_forward' / 'Next';
+    }
+
+    &::scroll-button(left) {
+        position-area: inline-start center;
+        content: 'arrow_back' / 'Previous';
+    }
+} */

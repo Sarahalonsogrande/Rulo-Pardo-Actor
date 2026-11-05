@@ -1,0 +1,266 @@
+/* ==========================================
+    * SITE STICKY NAVBAR (BASE / MOBILE FIRST)
+   ========================================== */
+.navbar {
+    position: relative;
+    padding-block: calc(var(--size-2) + var(--safe-top)) var(--size-2);
+    padding-inline: calc(var(--size-4) + var(--safe-left)) calc(var(--size-4) + var(--safe-right));
+
+    border-block-end: var(--border-subtle);
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: var(--z--1);
+
+        background: var(--surface-glass);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow-5);
+    }
+
+    .navbar-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-inline-size: min(100%, var(--viewport-xxl));
+        margin-inline: auto;
+
+        .logo-img {
+            inline-size: var(--font-size-fluid-5);
+        }
+
+        /* Keyboard focus */
+        .menu-toggler:focus-visible+.hamburger {
+            outline: var(--border-size-2) solid var(--focus-color);
+            outline-offset: var(--space-xs);
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: var(--space-3xs);
+            inline-size: var(--size-7);
+            aspect-ratio: var(--ratio-square);
+
+            cursor: pointer;
+
+            span {
+                display: block;
+                inline-size: 100%;
+                block-size: var(--size-px-1);
+
+                background-color: var(--color-accent-highlight);
+                border-radius: var(--radius-round);
+
+                transition:
+                    transform var(--duration-moderate-2) var(--ease-2),
+                    opacity var(--duration-moderate-1) var(--ease-2),
+                    background-color var(--duration-moderate-2) var(--ease-2);
+            }
+        }
+
+        /* Mobile Menu */
+        .nav-menu {
+            position: fixed;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            min-block-size: 100dvh;
+            padding: var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left);
+
+            background: var(--surface);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            z-index: var(--z-important);
+
+            transition:
+                opacity var(--duration-moderate-2) var(--ease-2),
+                visibility 0s linear var(--duration-moderate-2);
+
+            ul {
+                inline-size: 100%;
+                padding-inline: 0;
+                padding-block: 0;
+                display: grid;
+                gap: var(--space-m);
+
+                text-align: center;
+
+                li {
+                    a {
+                        display: block;
+                        padding-inline: var(--space-xs);
+                        padding-block: var(--space-m);
+
+                        font-size: var(--font-size-fluid-0);
+                        color: var(--text-muted);
+                        font-weight: var(--font-weight-6);
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        opacity: 0;
+
+                        transform: translateY(calc(var(--size-4) * -1));
+                        transition:
+                            transform var(--duration-moderate-2) var(--ease-2),
+                            opacity var(--duration-moderate-2) var(--ease-2),
+                            color var(--duration-quick-1) var(--ease-2);
+
+                        &.active,
+                        &:hover {
+                            color: var(--action-accent);
+                        }
+                    }
+                }
+            }
+        }
+
+        /* Open menu state via Checkbox Hack */
+        &:has(.menu-toggler:checked) {
+            .nav-menu {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+
+                transition:
+                    opacity var(--duration-moderate-2) var(--ease-2),
+                    visibility 0s linear 0s;
+
+                a {
+                    opacity: 1;
+
+                    transform: translateY(0);
+                }
+
+                ul {
+
+                    /* Staggered animation delays for mobile links */
+                    li:nth-child(1) a {
+                        transition-delay: var(--duration-quick-2);
+                    }
+
+                    li:nth-child(2) a {
+                        transition-delay: var(--duration-moderate-1);
+                    }
+
+                    li:nth-child(3) a {
+                        transition-delay: var(--duration-moderate-2);
+                    }
+
+                    li:nth-child(4) a {
+                        transition-delay: var(--duration-gentle-1);
+                    }
+                }
+            }
+
+            .hamburger {
+                z-index: calc(var(--z-important) + 1);
+
+                span {
+                    &:nth-child(1) {
+                        transform: translateY(var(--size-2)) rotate(45deg);
+                    }
+
+                    &:nth-child(2) {
+                        opacity: 0;
+                        transform: translateX(var(--size-2));
+                    }
+
+                    &:nth-child(3) {
+                        transform: translateY(calc(var(--size-2) * -1)) rotate(-45deg);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ==========================================
+    * TABLET BLOCK ( viewport-md )
+   ========================================== */
+@media (min-width: 768px) {
+    .navbar {
+
+        .navbar-content {
+
+            /* Hide mobile toggler & hamburger */
+            .menu-toggler {
+                display: none;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            /* Reset mobile menu styles to desktop layout */
+            .nav-menu {
+                position: static;
+                display: block;
+                min-block-size: auto;
+                padding-inline: 0;
+                padding-block: 0;
+
+                background: transparent;
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+
+                ul {
+                    display: flex;
+                    gap: var(--space-m);
+
+                    li {
+
+                        a {
+                            position: relative;
+                            padding-inline: var(--space-s);
+                            padding-block: var(--space-2xs);
+
+                            font-size: var(--font-size-fluid--1);
+                            opacity: 1;
+
+                            transform: none;
+
+                            /* Hover line effect only for desktop */
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                inset-block-end: 0;
+                                inset-inline: var(--size-3);
+                                block-size: var(--size-px-00);
+
+                                background: var(--color-primary-highlight);
+
+                                transform: scaleX(0);
+                                transform-origin: center;
+                                transition: transform var(--duration-moderate-2) var(--ease-3);
+                            }
+
+                            &:hover::after {
+                                transform: scaleX(1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ==========================================
+    * ACCESSIBILITY (REDUCED MOTION)
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+    .navbar {
+
+        .nav-menu,
+        .nav-menu a,
+        .hamburger span,
+        .nav-menu a::after {
+            transition: none;
+        }
+    }
+}

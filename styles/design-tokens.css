@@ -1,0 +1,919 @@
+/*
+ * DESIGN TOKENS
+ *
+ * Original references and sources of inspiration:
+ * - Open Props v1.7.23: https://github.com/argyleink/open-props
+ * - Brainly Design System — UX Motion:
+ *   https://design.brainly.com/8adfd5f36/p/091f75-ux-motion
+ * - Utopia — Fluid Responsive Design: https://utopia.fyi/
+ *
+ * Custom stylesheet adapted and developed by Sarah A.G. (2026).
+ * Includes adapted Open Props tokens and custom design tokens
+ * for typography, spacing, color, elevation and motion.
+ *
+ * Open Props is licensed under the MIT License.
+ * Copyright (c) 2021 Adam Argyle
+ */
+
+:where(html) {
+    /* ==========================================
+        * TYPOGRAPHY / SIZES / SPACES
+       ========================================== */
+
+    /*
+     * UTOPIA FLUID FONT SIZES
+     * @link https://utopia.fyi/type/calculator?c=360,16,1.2,1440,18,1.25,5,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+     */
+    --font-size-fluid--3: clamp(0.576rem, 0.5796rem + -0.004vw, 0.5787rem);
+    --font-size-fluid--2: clamp(0.6944rem, 0.6859rem + 0.0379vw, 0.72rem);
+    --font-size-fluid--1: clamp(0.8333rem, 0.8111rem + 0.0988vw, 0.9rem);
+    --font-size-fluid-0: clamp(1rem, 0.9583rem + 0.1852vw, 1.125rem);
+    --font-size-fluid-1: clamp(1.2rem, 1.1313rem + 0.3056vw, 1.4063rem);
+    --font-size-fluid-2: clamp(1.44rem, 1.3341rem + 0.4708vw, 1.7578rem);
+    --font-size-fluid-3: clamp(1.728rem, 1.5716rem + 0.6952vw, 2.1973rem);
+    --font-size-fluid-4: clamp(2.0736rem, 1.8493rem + 0.997vw, 2.7466rem);
+    --font-size-fluid-5: clamp(2.4883rem, 2.1734rem + 1.3999vw, 3.4332rem);
+    /* Hero display */
+    --font-size-dramatic: clamp(4.5rem, 3rem + 6.6667vw, 9rem);
+
+    /*
+     * UTOPIA FLUID SPACES
+     * @link https://utopia.fyi/space/calculator?c=360,16,1.2,1440,18,1.25,5,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12
+     */
+    --space-3xs: clamp(0.25rem, 0.2292rem + 0.0926vw, 0.3125rem);
+    --space-2xs: clamp(0.5rem, 0.4792rem + 0.0926vw, 0.5625rem);
+    --space-xs: clamp(0.75rem, 0.7083rem + 0.1852vw, 0.875rem);
+    --space-s: clamp(1rem, 0.9583rem + 0.1852vw, 1.125rem);
+    --space-m: clamp(1.5rem, 1.4375rem + 0.2778vw, 1.6875rem);
+    --space-l: clamp(2rem, 1.9167rem + 0.3704vw, 2.25rem);
+    --space-xl: clamp(3rem, 2.875rem + 0.5556vw, 3.375rem);
+    --space-2xl: clamp(4rem, 3.8333rem + 0.7407vw, 4.5rem);
+    --space-3xl: clamp(6rem, 5.75rem + 1.1111vw, 6.75rem);
+
+    /* * --- One-up pairs --- */
+    --space-3xs-2xs: clamp(0.25rem, 0.1458rem + 0.463vw, 0.5625rem);
+    --space-2xs-xs: clamp(0.5rem, 0.375rem + 0.5556vw, 0.875rem);
+    --space-xs-s: clamp(0.75rem, 0.625rem + 0.5556vw, 1.125rem);
+    --space-s-m: clamp(1rem, 0.7708rem + 1.0185vw, 1.6875rem);
+    --space-m-l: clamp(1.5rem, 1.25rem + 1.1111vw, 2.25rem);
+    --space-l-xl: clamp(2rem, 1.5417rem + 2.037vw, 3.375rem);
+    --space-xl-2xl: clamp(3rem, 2.5rem + 2.2222vw, 4.5rem);
+    --space-2xl-3xl: clamp(4rem, 3.0833rem + 4.0741vw, 6.75rem);
+
+    /* * --- Custom pairs --- */
+    --space-s-l: clamp(1rem, 0.5833rem + 1.8519vw, 2.25rem);
+
+    /*
+     * RELATIVE SIZES
+     * Rem-based font-size, spacing and sizing scale
+     */
+    --font-size-00: 0.5rem;
+    --font-size-0: 0.75rem;
+    --font-size-1: 1rem;
+    --font-size-2: 1.1rem;
+    --font-size-3: 1.25rem;
+    --font-size-4: 1.5rem;
+    --font-size-5: 2rem;
+    --font-size-6: 2.5rem;
+    --font-size-7: 3rem;
+    --font-size-8: 3.5rem;
+
+    --size-000: -0.5rem;
+    --size-00: -0.25rem;
+    --size-0: 0.25rem;
+    --size-1: 0.5rem;
+    --size-2: 0.75rem;
+    --size-3: 1rem;
+    --size-4: 1.25rem;
+    --size-5: 1.5rem;
+    --size-6: 1.75rem;
+    --size-7: 2rem;
+    --size-8: 3rem;
+    --size-9: 4rem;
+    --size-10: 5rem;
+    --size-11: 7.5rem;
+    --size-12: 10rem;
+    --size-13: 15rem;
+    --size-14: 20rem;
+    --size-15: 30rem;
+
+    /* * --- Font Weights --- */
+    --font-weight-1: 100;
+    --font-weight-2: 200;
+    --font-weight-3: 300;
+    --font-weight-4: 400;
+    --font-weight-5: 500;
+    --font-weight-6: 600;
+    --font-weight-7: 700;
+    --font-weight-8: 800;
+    --font-weight-9: 900;
+
+    /* * --- Letter Spacing --- */
+    --font-letterspacing-0: -0.05em;
+    --font-letterspacing-1: 0.025em;
+    --font-letterspacing-2: 0.05em;
+    --font-letterspacing-3: 0.075em;
+    --font-letterspacing-4: 0.15em;
+    --font-letterspacing-5: 0.5em;
+    --font-letterspacing-6: 0.75em;
+    --font-letterspacing-7: 1em;
+
+    /* * --- Line Height --- */
+    --font-lineheight-00: 0.95;
+    --font-lineheight-0: 1.1;
+    --font-lineheight-1: 1.25;
+    --font-lineheight-2: 1.375;
+    --font-lineheight-3: 1.5;
+    --font-lineheight-4: 1.75;
+    --font-lineheight-5: 2;
+
+    /*
+     * RELATIVE SIZES
+     * Ch-based values related to text width.
+     */
+    --size-relative-000: -0.5ch;
+    --size-relative-00: -0.25ch;
+    --size-relative-1: 0.25ch;
+    --size-relative-2: 0.5ch;
+    --size-relative-3: 1ch;
+    --size-relative-4: 1.25ch;
+    --size-relative-5: 1.5ch;
+    --size-relative-6: 1.75ch;
+    --size-relative-7: 2ch;
+    --size-relative-8: 3ch;
+    --size-relative-9: 4ch;
+    --size-relative-10: 5ch;
+    --size-relative-11: 7.5ch;
+    --size-relative-12: 10ch;
+    --size-relative-13: 15ch;
+    --size-relative-14: 20ch;
+    --size-relative-15: 30ch;
+
+    /*
+     * CONTENT SIZES
+     * Maximum readable text widths.
+     */
+    --size-content-1: 20ch;
+    --size-content-2: 30ch;
+    --size-content-3: 45ch;
+    --size-content-4: 60ch;
+
+    /*
+     * HEADER TEXT WIDTH
+     * Maximum readable header widths.
+     */
+    --size-header-1: 20ch;
+    --size-header-2: 25ch;
+    --size-header-3: 35ch;
+
+    /*
+     * VIEWPORT SIZE TOKENS
+     * Maximum widths for fluid containers.
+     * CSS custom properties cannot be used directly in media queries.
+     */
+    --viewport-xs: 20rem;
+    /* 320px */
+    --viewport-sm: 30rem;
+    /* 480px */
+    --viewport-md: 48rem;
+    /* 768px */
+    --viewport-lg: 64rem;
+    /* 1024px */
+    --viewport-xl: 80rem;
+    /* 1280px */
+    --viewport-xxl: 90rem;
+    /* 1440px */
+    --viewport-xxxl: 120rem;
+    /* 1920px */
+
+    /*
+     * ASPECT RATIOS
+     * Relationship between the width and height expressed as Width / Height
+     */
+
+    --ratio-square: 1;
+    --ratio-landscape: 4 / 3;
+    --ratio-portrait: 3 / 4;
+    --ratio-widescreen: 16 / 9;
+    --ratio-ultrawide: 18 / 5;
+    --ratio-golden: 1.618 / 1;
+
+    /*
+     * STATIC SIZES:
+     * Fixed pixel-based spacing & sizing.
+     */
+    --size-px-000: -4px;
+    --size-px-00: 1px;
+    --size-px-0: 2px;
+    --size-px-1: 4px;
+    --size-px-2: 8px;
+    --size-px-3: 16px;
+    --size-px-4: 20px;
+    --size-px-5: 24px;
+    --size-px-6: 28px;
+    --size-px-7: 32px;
+    --size-px-8: 48px;
+    --size-px-9: 64px;
+    --size-px-10: 80px;
+    --size-px-11: 120px;
+    --size-px-12: 160px;
+    --size-px-13: 240px;
+    --size-px-14: 320px;
+    --size-px-15: 480px;
+
+    /* * --- Font Families --- */
+    --font-family-serif: ui-serif, serif;
+    --font-family-system-ui: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    --font-family-transitional: Charter, Bitstream Charter, Sitka Text, Cambria, serif;
+    --font-family-old-style: Iowan Old Style, Palatino Linotype, URW Palladio L, P052, serif;
+    --font-family-humanist: Seravek, Gill Sans Nova, Ubuntu, Calibri, DejaVu Sans, source-sans-pro, sans-serif;
+    --font-family-geometric-humanist: Avenir, Montserrat, Corbel, URW Gothic, source-sans-pro, sans-serif;
+    --font-family-classical-humanist: Optima, Candara, Noto Sans, source-sans-pro, sans-serif;
+    --font-family-neo-grotesque: Inter, Roboto, Helvetica Neue, Arial Nova, Nimbus Sans, Arial, sans-serif;
+    --font-family-monospace-slab-serif: Nimbus Mono PS, Courier New, monospace;
+    --font-family-monospace-code: Dank Mono, Operator Mono, Inconsolata, Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono, Source Code Pro, Cascadia Code, Menlo, Consolas, DejaVu Sans Mono, monospace;
+    --font-family-industrial: Bahnschrift, DIN Alternate, Franklin Gothic Medium, Nimbus Sans Narrow, sans-serif-condensed, sans-serif;
+    --font-family-rounded-sans: ui-rounded, Hiragino Maru Gothic ProN, Quicksand, Comfortaa, Manjari, Arial Rounded MT, Arial Rounded MT Bold, Calibri, source-sans-pro, sans-serif;
+    --font-family-slab-serif: Rockwell, Rockwell Nova, Roboto Slab, DejaVu Serif, Sitka Small, serif;
+    --font-family-antique: Superclarendon, Bookman Old Style, URW Bookman, URW Bookman L, Georgia Pro, Georgia, serif;
+    --font-family-didone: Didot, Bodoni MT, Noto Serif Display, URW Palladio L, P052, Sylfaen, serif;
+    --font-family-handwritten: Segoe Print, Bradley Hand, Chilanka, TSCu_Comic, casual, cursive;
+
+    /* ==========================================
+        * BORDERS
+       ========================================== */
+
+    --border-size-1: 1px;
+    --border-size-2: 2px;
+    --border-size-3: 5px;
+    --border-size-4: 10px;
+    --border-size-5: 25px;
+
+    --radius-1: 2px;
+    --radius-2: 5px;
+    --radius-3: 1rem;
+    --radius-4: 2rem;
+    --radius-5: 4rem;
+    --radius-6: 8rem;
+
+    --radius-drawn-1: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    --radius-drawn-2: 125px 10px 20px 185px / 25px 205px 205px 25px;
+    --radius-drawn-3: 15px 255px 15px 225px / 225px 15px 255px 15px;
+    --radius-drawn-4: 15px 25px 155px 25px / 225px 150px 25px 115px;
+    --radius-drawn-5: 250px 25px 15px 20px / 15px 80px 105px 115px;
+    --radius-drawn-6: 28px 100px 20px 15px / 150px 30px 205px 225px;
+
+    --radius-round: 1e5px;
+
+    --radius-blob-1: 30% 70% 70% 30% / 53% 30% 70% 47%;
+    --radius-blob-2: 53% 47% 34% 66% / 63% 46% 54% 37%;
+    --radius-blob-3: 37% 63% 56% 44% / 49% 56% 44% 51%;
+    --radius-blob-4: 63% 37% 37% 63% / 43% 37% 63% 57%;
+    --radius-blob-5: 49% 51% 48% 52% / 57% 44% 56% 43%;
+
+    --radius-conditional-1: clamp(0px, calc(100vw - 100%) * 1e5, var(--radius-1));
+    --radius-conditional-2: clamp(0px, calc(100vw - 100%) * 1e5, var(--radius-2));
+    --radius-conditional-3: clamp(0px, calc(100vw - 100%) * 1e5, var(--radius-3));
+    --radius-conditional-4: clamp(0px, calc(100vw - 100%) * 1e5, var(--radius-4));
+    --radius-conditional-5: clamp(0px, calc(100vw - 100%) * 1e5, var(--radius-5));
+    --radius-conditional-6: clamp(0px, calc(100vw - 100%) * 1e5, var(--radius-6));
+
+    /* ==========================================
+        * STACKING ORDER
+       ========================================== */
+
+    --z--1: -1;
+    --z-1: 1;
+    --z-2: 2;
+    --z-3: 3;
+    --z-4: 4;
+    --z-5: 5;
+    --z-important: 999;
+
+    /* ==========================================
+        * COLORS
+       ========================================== */
+
+    /*
+     * DINAMIC PALETTE:
+     * Generated from hue, chroma and lightness.
+     * Adjust -hue and -chroma variables to generate a different color family
+     */
+    --palette-hue-rotate-by: 0;
+
+    /* * --- Neutral --- */
+    --neutral-hue: 185;
+    --neutral-chroma: 0.05;
+
+    --neutral-1: oklch(99% calc(var(--neutral-chroma) * 0.03) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 0));
+    --neutral-2: oklch(96% calc(var(--neutral-chroma) * 0.06) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 1));
+    --neutral-3: oklch(93% calc(var(--neutral-chroma) * 0.1) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 2));
+    --neutral-4: oklch(84% calc(var(--neutral-chroma) * 0.12) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 3));
+    --neutral-5: oklch(80% calc(var(--neutral-chroma) * 0.16) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 4));
+    --neutral-6: oklch(71% calc(var(--neutral-chroma) * 0.19) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 5));
+    --neutral-7: oklch(66% calc(var(--neutral-chroma) * 0.2) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 6));
+    --neutral-8: oklch(58% calc(var(--neutral-chroma) * 0.21) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 7));
+    --neutral-9: oklch(53% calc(var(--neutral-chroma) * 0.2) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 8));
+    --neutral-10: oklch(49% calc(var(--neutral-chroma) * 0.19) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 9));
+    --neutral-11: oklch(42% calc(var(--neutral-chroma) * 0.17) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 10));
+    --neutral-12: oklch(35% calc(var(--neutral-chroma) * 0.15) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 11));
+    --neutral-13: oklch(27% calc(var(--neutral-chroma) * 0.12) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 12));
+    --neutral-14: oklch(20% calc(var(--neutral-chroma) * 0.09) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 13));
+    --neutral-15: oklch(16% calc(var(--neutral-chroma) * 0.07) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 14));
+    --neutral-16: oklch(10% calc(var(--neutral-chroma) * 0.05) calc(var(--neutral-hue) + var(--palette-hue-rotate-by) * 15));
+
+    /* * --- Primary --- */
+    --primary-hue: 185;
+    --primary-chroma: 0.6;
+
+    --primary-1: oklch(96% calc(var(--primary-chroma) * 0.06) calc(var(--primary-hue) + var(--palette-hue-rotate-by) * 0));
+    --primary-2: oklch(84% calc(var(--primary-chroma) * 0.12) calc(var(--primary-hue) + var(--palette-hue-rotate-by) * 1));
+    --primary-3: oklch(58% calc(var(--primary-chroma) * 0.21) calc(var(--primary-hue) + var(--palette-hue-rotate-by) * 2));
+    --primary-4: oklch(42% calc(var(--primary-chroma) * 0.17) calc(var(--primary-hue) + var(--palette-hue-rotate-by) * 3));
+    --primary-5: oklch(27% calc(var(--primary-chroma) * 0.12) calc(var(--primary-hue) + var(--palette-hue-rotate-by) * 4));
+
+    /* * --- Accent --- */
+    --accent-hue: 350;
+    --accent-chroma: 0.6;
+
+    --accent-1: oklch(96% calc(var(--accent-chroma) * 0.06) calc(var(--accent-hue) + var(--palette-hue-rotate-by) * 0));
+    --accent-2: oklch(84% calc(var(--accent-chroma) * 0.12) calc(var(--accent-hue) + var(--palette-hue-rotate-by) * 1));
+    --accent-3: oklch(58% calc(var(--accent-chroma) * 0.21) calc(var(--accent-hue) + var(--palette-hue-rotate-by) * 2));
+    --accent-4: oklch(42% calc(var(--accent-chroma) * 0.17) calc(var(--accent-hue) + var(--palette-hue-rotate-by) * 3));
+    --accent-5: oklch(27% calc(var(--accent-chroma) * 0.12) calc(var(--accent-hue) + var(--palette-hue-rotate-by) * 4));
+
+    /* ==========================================
+        * GRADIENTS
+       ========================================== */
+
+    /* * --- Fade to DARK --- */
+    --gradient-fade-dark:
+        linear-gradient(to bottom in oklch,
+        transparent 0%,
+        var(--neutral-16) 100%
+    );
+
+    /* * --- Fade to LIGHT --- */
+    --gradient-fade-light:
+        linear-gradient(to bottom in oklch,
+        transparent 0%,
+        var(--neutral-1) 100%
+    );
+
+    /* * --- Fade to SURFACE-NESTED --- */
+    --gradient-fade-nested:
+        linear-gradient(to bottom in oklch,
+        transparent 0%,
+        var(--neutral-12) 100%
+    );
+
+    --glass-gradient: linear-gradient(
+        to bottom in oklch,
+        color-mix(in oklch, var(--neutral-16), transparent 45%),
+        color-mix(in oklch, var(--neutral-16), transparent 65%)
+    );
+
+    /* ==========================================
+        * NOISE
+       ========================================== */
+
+    --noise-1: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.005' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+    --noise-2: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.05' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+    --noise-3: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.25' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+    --noise-4: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 2056 2056' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+    --noise-5: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 2056 2056' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+
+    --noise-filter-1: contrast(300%) brightness(100%);
+    --noise-filter-2: contrast(200%) brightness(150%);
+    --noise-filter-3: contrast(200%) brightness(250%);
+    --noise-filter-4: contrast(200%) brightness(500%);
+    --noise-filter-5: contrast(200%) brightness(1000%);
+
+    /* ==========================================
+        * SHADOWS
+       ========================================== */
+
+    /*
+     * SHADOW SYSTEM
+     * Shadow color and strength are configurable.
+     * Color-scheme preferences adjust the default values.
+     */
+    --shadow-color: 220 3% 15%;
+    --shadow-strength: 1%;
+
+    --shadow-strength-3: calc(var(--shadow-strength) + 2%);
+    --shadow-strength-4: calc(var(--shadow-strength) + 3%);
+    --shadow-strength-5: calc(var(--shadow-strength) + 4%);
+    --shadow-strength-6: calc(var(--shadow-strength) + 5%);
+    --shadow-strength-7: calc(var(--shadow-strength) + 6%);
+    --shadow-strength-8: calc(var(--shadow-strength) + 7%);
+    --shadow-strength-10: calc(var(--shadow-strength) + 9%);
+
+    --inner-shadow-highlight: inset 0 -0.5px 0 0 #fff, inset 0 0.5px 0 0 rgba(0, 0, 0, 0.067);
+
+    --shadow-1: 0 1px 2px -1px hsl(var(--shadow-color) / var(--shadow-strength-10));
+    --shadow-2: 0 3px 5px -2px hsl(var(--shadow-color) / var(--shadow-strength-4)), 0 7px 14px -5px hsl(var(--shadow-color) / var(--shadow-strength-6));
+    --shadow-3: 0 -1px 3px 0 hsl(var(--shadow-color) / var(--shadow-strength-3)), 0 1px 2px -5px hsl(var(--shadow-color) / var(--shadow-strength-3)), 0 2px 5px -5px hsl(var(--shadow-color) / var(--shadow-strength-5)), 0 4px 12px -5px hsl(var(--shadow-color) / var(--shadow-strength-6)), 0 12px 15px -5px hsl(var(--shadow-color) / var(--shadow-strength-8));
+    --shadow-4: 0 -2px 5px 0 hsl(var(--shadow-color) / var(--shadow-strength-3)), 0 1px 1px -2px hsl(var(--shadow-color) / var(--shadow-strength-4)), 0 2px 2px -2px hsl(var(--shadow-color) / var(--shadow-strength-4)), 0 5px 5px -2px hsl(var(--shadow-color) / var(--shadow-strength-5)), 0 9px 9px -2px hsl(var(--shadow-color) / var(--shadow-strength-6)), 0 16px 16px -2px hsl(var(--shadow-color) / var(--shadow-strength-7));
+    --shadow-5: 0 -1px 2px 0 hsl(var(--shadow-color) / var(--shadow-strength-3)), 0 2px 1px -2px hsl(var(--shadow-color) / var(--shadow-strength-4)), 0 5px 5px -2px hsl(var(--shadow-color) / var(--shadow-strength-4)), 0 10px 10px -2px hsl(var(--shadow-color) / var(--shadow-strength-5)), 0 20px 20px -2px hsl(var(--shadow-color) / var(--shadow-strength-6)), 0 40px 40px -2px hsl(var(--shadow-color) / var(--shadow-strength-8));
+    --shadow-6: 0 -1px 2px 0 hsl(var(--shadow-color) / var(--shadow-strength-3)), 0 3px 2px -2px hsl(var(--shadow-color) / var(--shadow-strength-4)), 0 7px 5px -2px hsl(var(--shadow-color) / var(--shadow-strength-4)), 0 12px 10px -2px hsl(var(--shadow-color) / var(--shadow-strength-5)), 0 22px 18px -2px hsl(var(--shadow-color) / var(--shadow-strength-6)), 0 41px 33px -2px hsl(var(--shadow-color) / var(--shadow-strength-7)), 0 100px 80px -2px hsl(var(--shadow-color) / var(--shadow-strength-8));
+
+    --inner-shadow-0: inset 0 0 0 1px hsl(var(--shadow-color) / var(--shadow-strength-10));
+    --inner-shadow-1: inset 0 1px 2px 0 hsl(var(--shadow-color) / var(--shadow-strength-10)), var(--inner-shadow-highlight);
+    --inner-shadow-2: inset 0 1px 4px 0 hsl(var(--shadow-color) / var(--shadow-strength-10)), var(--inner-shadow-highlight);
+    --inner-shadow-3: inset 0 2px 8px 0 hsl(var(--shadow-color) / var(--shadow-strength-10)), var(--inner-shadow-highlight);
+    --inner-shadow-4: inset 0 2px 14px 0 hsl(var(--shadow-color) / var(--shadow-strength-10)), var(--inner-shadow-highlight);
+
+    /* ==========================================
+        * EASING
+       ========================================== */
+
+    --ease-1: cubic-bezier(0.25, 0, 0.5, 1);
+    --ease-2: cubic-bezier(0.25, 0, 0.4, 1);
+    --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+    --ease-4: cubic-bezier(0.25, 0, 0.2, 1);
+    --ease-5: cubic-bezier(0.25, 0, 0.1, 1);
+
+    --ease-in-1: cubic-bezier(0.25, 0, 1, 1);
+    --ease-in-2: cubic-bezier(0.5, 0, 1, 1);
+    --ease-in-3: cubic-bezier(0.7, 0, 1, 1);
+    --ease-in-4: cubic-bezier(0.9, 0, 1, 1);
+    --ease-in-5: cubic-bezier(1, 0, 1, 1);
+
+    --ease-out-1: cubic-bezier(0, 0, 0.75, 1);
+    --ease-out-2: cubic-bezier(0, 0, 0.5, 1);
+    --ease-out-3: cubic-bezier(0, 0, 0.3, 1);
+    --ease-out-4: cubic-bezier(0, 0, 0.1, 1);
+    --ease-out-5: cubic-bezier(0, 0, 0, 1);
+
+    --ease-in-out-1: cubic-bezier(0.1, 0, 0.9, 1);
+    --ease-in-out-2: cubic-bezier(0.3, 0, 0.7, 1);
+    --ease-in-out-3: cubic-bezier(0.5, 0, 0.5, 1);
+    --ease-in-out-4: cubic-bezier(0.7, 0, 0.3, 1);
+    --ease-in-out-5: cubic-bezier(0.9, 0, 0.1, 1);
+
+    --ease-elastic-out-1: cubic-bezier(0.5, 0.75, 0.75, 1.25);
+    --ease-elastic-out-2: cubic-bezier(0.5, 1, 0.75, 1.25);
+    --ease-elastic-out-3: cubic-bezier(0.5, 1.25, 0.75, 1.25);
+    --ease-elastic-out-4: cubic-bezier(0.5, 1.5, 0.75, 1.25);
+    --ease-elastic-out-5: cubic-bezier(0.5, 1.75, 0.75, 1.25);
+
+    --ease-elastic-in-1: cubic-bezier(0.5, -0.25, 0.75, 1);
+    --ease-elastic-in-2: cubic-bezier(0.5, -0.5, 0.75, 1);
+    --ease-elastic-in-3: cubic-bezier(0.5, -0.75, 0.75, 1);
+    --ease-elastic-in-4: cubic-bezier(0.5, -1, 0.75, 1);
+    --ease-elastic-in-5: cubic-bezier(0.5, -1.25, 0.75, 1);
+
+    --ease-elastic-in-out-1: cubic-bezier(0.5, -0.1, 0.1, 1.5);
+    --ease-elastic-in-out-2: cubic-bezier(0.5, -0.3, 0.1, 1.5);
+    --ease-elastic-in-out-3: cubic-bezier(0.5, -0.5, 0.1, 1.5);
+    --ease-elastic-in-out-4: cubic-bezier(0.5, -0.7, 0.1, 1.5);
+    --ease-elastic-in-out-5: cubic-bezier(0.5, -0.9, 0.1, 1.5);
+
+    --ease-spring-1: linear(0, 0.006, 0.025 2.8%, 0.101 6.1%, 0.539 18.9%, 0.721 25.3%, 0.849 31.5%, 0.937 38.1%, 0.968 41.8%, 0.991 45.7%, 1.006 50.1%, 1.015 55%, 1.017 63.9%, 1.001);
+    --ease-spring-2: linear(0, 0.007, 0.029 2.2%, 0.118 4.7%, 0.625 14.4%, 0.826 19%, 0.902, 0.962, 1.008 26.1%, 1.041 28.7%, 1.064 32.1%, 1.07 36%, 1.061 40.5%, 1.015 53.4%, 0.999 61.6%, 0.995 71.2%, 1);
+    --ease-spring-3: linear(0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 0.997 69.8%, 1.003 76.9%, 1);
+    --ease-spring-4: linear(0, 0.009, 0.037 1.7%, 0.153 3.6%, 0.776 10.3%, 1.001, 1.142 16%, 1.185, 1.209 19%, 1.215 19.9% 20.8%, 1.199, 1.165 25%, 1.056 30.3%, 1.008 33%, 0.973, 0.955 39.2%, 0.953 41.1%, 0.957 43.3%, 0.998 53.3%, 1.009 59.1% 63.7%, 0.998 78.9%, 1);
+    --ease-spring-5: linear(0, 0.01, 0.04 1.6%, 0.161 3.3%, 0.816 9.4%, 1.046, 1.189 14.4%, 1.231, 1.254 17%, 1.259, 1.257 18.6%, 1.236, 1.194 22.3%, 1.057 27%, 0.999 29.4%, 0.955 32.1%, 0.942, 0.935 34.9%, 0.933, 0.939 38.4%, 1 47.3%, 1.011, 1.017 52.6%, 1.016 56.4%, 1 65.2%, 0.996 70.2%, 1.001 87.2%, 1);
+
+    --ease-bounce-1: linear(0, 0.004, 0.016, 0.035, 0.063, 0.098, 0.141, 0.191, 0.25, 0.316, 0.391 36.8%, 0.563, 0.766, 1 58.8%, 0.946, 0.908 69.1%, 0.895, 0.885, 0.879, 0.878, 0.879, 0.885, 0.895, 0.908 89.7%, 0.946, 1);
+    --ease-bounce-2: linear(0, 0.004, 0.016, 0.035, 0.063, 0.098, 0.141 15.1%, 0.25, 0.391, 0.562, 0.765, 1, 0.892 45.2%, 0.849, 0.815, 0.788, 0.769, 0.757, 0.753, 0.757, 0.769, 0.788, 0.815, 0.85, 0.892 75.2%, 1 80.2%, 0.973, 0.954, 0.943, 0.939, 0.943, 0.954, 0.973, 1);
+    --ease-bounce-3: linear(0, 0.004, 0.016, 0.035, 0.062, 0.098, 0.141 11.4%, 0.25, 0.39, 0.562, 0.764, 1 30.3%, 0.847 34.8%, 0.787, 0.737, 0.699, 0.672, 0.655, 0.65, 0.656, 0.672, 0.699, 0.738, 0.787, 0.847 61.7%, 1 66.2%, 0.946, 0.908, 0.885 74.2%, 0.879, 0.878, 0.879, 0.885 79.5%, 0.908, 0.946, 1 87.4%, 0.981, 0.968, 0.96, 0.957, 0.96, 0.968, 0.981, 1);
+    --ease-bounce-4: linear(0, 0.004, 0.016 3%, 0.062, 0.141, 0.25, 0.391, 0.562 18.2%, 1 24.3%, 0.81, 0.676 32.3%, 0.629, 0.595, 0.575, 0.568, 0.575, 0.595, 0.629, 0.676 48.2%, 0.811, 1 56.2%, 0.918, 0.86, 0.825, 0.814, 0.825, 0.86, 0.918, 1 77.2%, 0.94 80.6%, 0.925, 0.92, 0.925, 0.94 87.5%, 1 90.9%, 0.974, 0.965, 0.974, 1);
+    --ease-bounce-5: linear(0, 0.004, 0.016 2.5%, 0.063, 0.141, 0.25 10.1%, 0.562, 1 20.2%, 0.783, 0.627, 0.534 30.9%, 0.511, 0.503, 0.511, 0.534 38%, 0.627, 0.782, 1 48.7%, 0.892, 0.815, 0.769 56.3%, 0.757, 0.753, 0.757, 0.769 61.3%, 0.815, 0.892, 1 68.8%, 0.908 72.4%, 0.885, 0.878, 0.885, 0.908 79.4%, 1 83%, 0.954 85.5%, 0.943, 0.939, 0.943, 0.954 90.5%, 1 93%, 0.977, 0.97, 0.977, 1);
+
+    --ease-elastic-1: var(--ease-elastic-out-1);
+    --ease-elastic-2: var(--ease-elastic-out-2);
+    --ease-elastic-3: var(--ease-elastic-out-3);
+    --ease-elastic-4: var(--ease-elastic-out-4);
+    --ease-elastic-5: var(--ease-elastic-out-5);
+
+    --ease-squish-1: var(--ease-elastic-in-out-1);
+    --ease-squish-2: var(--ease-elastic-in-out-2);
+    --ease-squish-3: var(--ease-elastic-in-out-3);
+    --ease-squish-4: var(--ease-elastic-in-out-4);
+    --ease-squish-5: var(--ease-elastic-in-out-5);
+
+    --ease-step-1: steps(2);
+    --ease-step-2: steps(3);
+    --ease-step-3: steps(4);
+    --ease-step-4: steps(7);
+    --ease-step-5: steps(10);
+
+    --ease-circ-in: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    --ease-circ-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    --ease-circ-out: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    --ease-cubic-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    --ease-cubic-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --ease-cubic-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+    --ease-expo-in: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    --ease-expo-in-out: cubic-bezier(1, 0, 0, 1);
+    --ease-expo-out: cubic-bezier(0.19, 1, 0.22, 1);
+
+    --ease-quad-in: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    --ease-quad-in-out: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    --ease-quad-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    --ease-quart-in: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    --ease-quart-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-quart-out: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    --ease-quint-in: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    --ease-quint-in-out: cubic-bezier(0.86, 0, 0.07, 1);
+    --ease-quint-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+    --ease-sine-in: cubic-bezier(0.47, 0, 0.745, 0.715);
+    --ease-sine-in-out: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    --ease-sine-out: cubic-bezier(0.39, 0.575, 0.565, 1);
+
+    /* ==========================================
+        * ANIMATIONS
+       ========================================== */
+
+    /* *--- Animations --- */
+    --animation-scale-up: scale-up 0.5s var(--ease-3);
+    --animation-scale-down: scale-down 0.5s var(--ease-3);
+
+    --animation-fade-in: fade-in 0.5s var(--ease-3);
+    --animation-fade-in-bloom: fade-in-bloom 2s var(--ease-3);
+    --animation-fade-out: fade-out 0.5s var(--ease-3);
+    --animation-fade-out-bloom: fade-out-bloom 2s var(--ease-3);
+
+    --animation-shake-x: shake-x 0.75s var(--ease-out-5);
+    --animation-shake-y: shake-y 0.75s var(--ease-out-5);
+    --animation-shake-z: shake-z 1s var(--ease-in-out-3);
+
+    --animation-slide-out-up: slide-out-up 0.5s var(--ease-3);
+    --animation-slide-out-down: slide-out-down 0.5s var(--ease-3);
+    --animation-slide-out-right: slide-out-right 0.5s var(--ease-3);
+    --animation-slide-out-left: slide-out-left 0.5s var(--ease-3);
+    --animation-slide-in-up: slide-in-up 0.5s var(--ease-3);
+    --animation-slide-in-down: slide-in-down 0.5s var(--ease-3);
+    --animation-slide-in-right: slide-in-right 0.5s var(--ease-3);
+    --animation-slide-in-left: slide-in-left 0.5s var(--ease-3);
+
+    --animation-spin: spin 2s linear infinite;
+    --animation-ping: ping 5s var(--ease-out-3) infinite;
+    --animation-blink: blink 1s var(--ease-out-3) infinite;
+    --animation-float: float 3s var(--ease-in-out-3) infinite;
+    --animation-bounce: bounce 2s var(--ease-squish-2) infinite;
+    --animation-pulse: pulse 2s var(--ease-out-3) infinite;
+
+    /*
+     * --- Animation durations ---
+     * Based on https://design.brainly.com/8adfd5f36/p/091f75-ux-motion
+     */
+    --duration-instant: 0ms;
+    /* text change */
+    --duration-quick-1: 80ms;
+    /* checkbox, radio, hover */
+    --duration-quick-2: 120ms;
+    /* toggle, tab, chip, color, fade */
+    --duration-moderate-1: 180ms;
+    /* dropdown, tooltip */
+    --duration-moderate-2: 260ms;
+    /* modal, toast, dialog, notification */
+    --duration-gentle-1: 320ms;
+    /* bottom sheet, card expand */
+    --duration-gentle-2: 420ms;
+    /* advanced animations */
+    --duration-8: 750ms;
+}
+
+/* ==========================================
+    * DARK COLOR SCHEME
+   ========================================== */
+
+@media (prefers-color-scheme: dark) {
+    :where(html) {
+        color-scheme: dark;
+
+        --shadow-color: 220 40% 2%;
+        --shadow-strength: 25%;
+        --inner-shadow-highlight: inset 0 -0.5px 0 0 hsla(0, 0%, 100%, 0.067),
+            inset 0 0.5px 0 0 rgba(0, 0, 0, 0.467);
+    }
+}
+
+/* ==========================================
+    * GRADIENT COLOR SPACE SUPPORT
+   ========================================== */
+
+@supports (background: linear-gradient(to right in oklab, #000, #fff)) {
+    :where(html) {
+        --gradient-space: in oklab;
+    }
+}
+
+/* ==========================================
+    * PREFERS REDUCED MOTION
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    :where(html) {
+        --animation-scale-up: none;
+        --animation-scale-down: none;
+
+        --animation-slide-out-up: none;
+        --animation-slide-out-down: none;
+        --animation-slide-out-right: none;
+        --animation-slide-out-left: none;
+
+        --animation-slide-in-up: none;
+        --animation-slide-in-down: none;
+        --animation-slide-in-right: none;
+        --animation-slide-in-left: none;
+
+        --animation-fade-in: none;
+        --animation-fade-in-bloom: none;
+        --animation-fade-out: none;
+        --animation-fade-out-bloom: none;
+
+        --animation-shake-x: none;
+        --animation-shake-y: none;
+        --animation-shake-z: none;
+
+        --animation-spin: none;
+        --animation-ping: none;
+        --animation-blink: none;
+        --animation-float: none;
+        --animation-bounce: none;
+        --animation-pulse: none;
+    }
+}
+
+/* ==========================================
+    * ANIMATION KEYFRAMES
+   ========================================== */
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-bloom {
+    0% {
+        filter: brightness(1) blur(20px);
+        opacity: 0;
+    }
+
+    10% {
+        filter: brightness(2) blur(10px);
+        opacity: 1;
+    }
+
+    to {
+        filter: brightness(1) blur(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-out-bloom {
+    to {
+        filter: brightness(1) blur(20px);
+        opacity: 0;
+    }
+
+    10% {
+        filter: brightness(2) blur(10px);
+        opacity: 1;
+    }
+
+    0% {
+        filter: brightness(1) blur(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scale-up {
+    to {
+        transform: scale(1.25);
+    }
+}
+
+@keyframes scale-down {
+    to {
+        transform: scale(0.75);
+    }
+}
+
+@keyframes slide-out-up {
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes slide-out-down {
+    to {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes slide-out-right {
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes slide-out-left {
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slide-in-up {
+    0% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes slide-in-down {
+    0% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes shake-x {
+
+    0%,
+    to {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-5%);
+    }
+
+    40% {
+        transform: translateX(5%);
+    }
+
+    60% {
+        transform: translateX(-5%);
+    }
+
+    80% {
+        transform: translateX(5%);
+    }
+}
+
+@keyframes shake-y {
+
+    0%,
+    to {
+        transform: translateY(0);
+    }
+
+    20% {
+        transform: translateY(-5%);
+    }
+
+    40% {
+        transform: translateY(5%);
+    }
+
+    60% {
+        transform: translateY(-5%);
+    }
+
+    80% {
+        transform: translateY(5%);
+    }
+}
+
+@keyframes shake-z {
+
+    0%,
+    to {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(-2deg);
+    }
+
+    40% {
+        transform: rotate(2deg);
+    }
+
+    60% {
+        transform: rotate(-2deg);
+    }
+
+    80% {
+        transform: rotate(2deg);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes ping {
+
+    90%,
+    to {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    to {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-25%);
+    }
+}
+
+@keyframes bounce {
+    25% {
+        transform: translateY(-20%);
+    }
+
+    40% {
+        transform: translateY(-3%);
+    }
+
+    0%,
+    60%,
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    50% {
+        transform: scale(0.9);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    @keyframes fade-in-bloom {
+        0% {
+            filter: brightness(1) blur(20px);
+            opacity: 0;
+        }
+
+        /* Bloom intensity is adapted for dark surfaces. */
+        10% {
+            filter: brightness(0.5) blur(10px);
+            opacity: 1;
+        }
+
+        to {
+            filter: brightness(1) blur(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade-out-bloom {
+        to {
+            filter: brightness(1) blur(20px);
+            opacity: 0;
+        }
+
+        10% {
+            filter: brightness(0.5) blur(10px);
+            opacity: 1;
+        }
+
+        0% {
+            filter: brightness(1) blur(0);
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Web oficial de Rulo Pardo, actor, director y creador. Cine, teatro, televisión, música, danza y más.">
+
+    <title>Rulo Pardo | Contacto</title>
+
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <main class="page-container">
+
+        <h1 id="form-title" class="page-title">Contacto</h1>
+
+        <section class="form-content" aria-labelledby="form-title">
+            <button type="button" class="button button--circle button--small" onclick="history.back()">
+                ←
+            </button>
+            <figure class="form-intro">
+                <img src="assets/images/director.webp" alt="Rulo Pardo">
+
+                <figcaption class="form-title">
+                    ¿Hablamos de un proyecto?
+                </figcaption>
+            </figure>
+
+            <form class="contact-form" action="#" method="post">
+                <!-- <p>
+                    Cuéntame tu idea y vemos qué podemos crear juntos.
+                </p> -->
+
+                <div class="form-field">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" autocomplete="name" placeholder="Tu nombre" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" autocomplete="email" placeholder="tu@email.com" required>
+                </div>
+
+                <div class="form-field form-message">
+                    <label for="message">Cuéntame tu proyecto</label>
+                    <textarea id="message" name="message" rows="6" placeholder="¿Qué tienes en mente?"
+                        required></textarea>
+                </div>
+
+                <button class="form-submit" type="submit">
+                    Enviar
+                </button>
+
+            </form>
+        </section>
+    </main>
+
+</body>

@@ -1,0 +1,445 @@
+/* ==========================================
+    * CASCADE LAYERS ORDER
+   ========================================== */
+/* *--- Declare the cascade Layers order --- */
+@layer tokens, reset, base, typography, layout, components, utilities, overrides;
+
+/* * --- Import external files into their layers --- */
+@import url('./design-tokens.css') layer(tokens);
+@import url('./reset.css') layer(reset);
+@import url('./fonts.css') layer(typography);
+@import url('./buttons.css') layer(components);
+/* @import url('./hero.css') layer(components); */
+@import url('./site-nav.css') layer(components);
+@import url('./gallery.css') layer(components);
+@import url('./works.css') layer(components);
+@import url('./credits-dialog.css') layer(components);
+@import url('./contact.css') layer(components);
+@import url('./form.css') layer(components);
+@import url('./footer.css') layer(components);
+
+/* ==========================================
+    * TOKENS LAYER
+   ========================================== */
+
+/* Semantic Tokens - use these instead of palette values directly */
+@layer tokens {
+    :root {
+        /* * --- BRAND COLORS --- */
+        --color-primary: var(--primary-4);
+        --color-accent: var(--accent-4);
+
+        /* Brand color scales for specific uses */
+        --color-primary-highlight: var(--primary-1);
+        --color-primary-interactive: var(--primary-2);
+        --color-primary-visited: var(--primary-3);
+        --color-accent-highlight: var(--accent-2);
+        --color-accent-interactive: var(--accent-3);
+
+        /* * --- SURFACES --- */
+        --background: var(--neutral-16);
+        --surface: var(--neutral-14);
+        --surface-nested: var(--neutral-12);
+        --surface-inverse: var(--neutral-2);
+        --surface-fade-dark: var(--gradient-fade-dark);
+        --surface-fade-light: var(--gradient-fade-light);
+        --surface-fade-nested: var(--gradient-fade-nested);
+        --surface-glass: var(--glass-gradient);
+
+        /* * --- TEXTS --- */
+        --text: var(--neutral-1);
+        --text-editorial: var(--neutral-2);
+        --text-muted: var(--neutral-6);
+        --text-inverse: var(--neutral-16);
+
+        /* * --- TYPOGRAPHY --- */
+        --font-serif: var(--font-family-serif);
+        --font-sans: var(--font-family-system-ui);
+        --font-mono: var(--font-family-monospace-code);
+
+        /* * --- INTERACTION & ACTIONS --- */
+        --action-primary: var(--color-primary-interactive);
+        --action-accent: var(--color-accent-interactive);
+        --focus-color: var(--color-primary-interactive);
+
+        --link: var(--action-primary);
+        --link-hover: var(--action-accent);
+        --link-visited: var(--color-primary-visited);
+
+        /* * --- BORDERS --- */
+        --border-subtle: var(--border-size-1) solid rgb(255 255 255 / 25%);
+        --border-brutal: var(--border-size-2) solid var(--text);
+
+        /*
+         * --- ENVIRONMENT ---
+         * Expose device safe-area values as reusable custom properties.
+         */
+        --safe-top: env(safe-area-inset-top, 0px);
+        --safe-right: env(safe-area-inset-right, 0px);
+        --safe-bottom: env(safe-area-inset-bottom, 0px);
+        --safe-left: env(safe-area-inset-left, 0px);
+    }
+}
+
+/* ==========================================
+    * BASE LAYER
+   ========================================== */
+
+/* Global defaults for typography, links, focus and selection */
+@layer base {
+    html {
+        color-scheme: dark;
+
+        scrollbar-gutter: stable;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        min-block-size: 100dvh;
+        font-family: var(--font-sans);
+        font-size: var(--size-px-3);
+        color: var(--text);
+        line-height: var(--font-lineheight-3);
+        background-color: var(--background);
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: var(--font-family-geometric-humanist);
+        font-optical-sizing: auto;
+        font-weight: var(--font-weight-5);
+        line-height: var(--font-lineheight-1);
+    }
+
+    h1 {
+        font-size: var(--font-size-fluid-3);
+        line-height: var(--font-lineheight-0);
+    }
+
+    h2 {
+        font-size: var(--font-size-fluid-2);
+    }
+
+    h3 {
+        font-size: var(--font-size-fluid-1);
+    }
+
+    p {
+        max-inline-size: var(--size-content-3);
+    }
+
+    a {
+        color: var(--link);
+        text-decoration: none;
+
+        &:visited {
+            color: var(--link-visited);
+        }
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+
+        li {
+            padding: 0;
+        }
+    }
+}
+
+/* ==========================================
+    * LAYOUT LAYER
+   ========================================== */
+
+/* Page structure, containers, grids and spacing */
+@layer layout {
+
+    /*
+     * FULL BLEED
+     * Keeps regular content within a centered column while allowing selected elements to span the full width.
+     */
+    .full-bleed-grid {
+        display: grid;
+        grid-template-columns:
+            1fr min(var(--viewport-md), 100%) 1fr;
+
+        &>* {
+            /* Default: Place regular children in the central column */
+            grid-column: 2;
+        }
+
+        .full-bleed {
+            /* Span all three columns */
+            grid-column: 1 / -1;
+        }
+    }
+}
+
+/* ==========================================
+    * COMPONENTS LAYER
+   ========================================== */
+
+/* Styles for reusable interface components */
+@layer components {
+
+    /* Hero */
+    .hero {
+        display: grid;
+        align-items: center;
+        block-size: 100dvh;
+
+        background:
+            linear-gradient(to bottom,
+                rgba(16, 20, 20, 0.1),
+                rgba(16, 20, 20, 1)) top / cover no-repeat local,
+            url('../assets/images/teoEncadenado1.jpg') top / cover no-repeat fixed;
+
+        .hero-content {
+            inline-size: min(100%, var(--viewport-xxl));
+            margin-inline: auto;
+            padding-inline: var(--size-7);
+
+            h1 {
+                font-size: var(--font-size-dramatic);
+                line-height: var(--font-lineheight-00);
+                color: var(--text-editorial);
+                text-transform: uppercase;
+                font-weight: var(--font-weight-9);
+                letter-spacing: var(--font-letterspacing-4);
+                margin-block-end: var(--size-9);
+            }
+
+            .hero-description {
+                display: flex;
+                justify-self: flex-end;
+
+                color: var(--text-muted);
+                font-size: var(--font-size-fluid-2);
+                line-height: var(--font-lineheight-1);
+                font-weight: var(--font-weight-4);
+
+            }
+        }
+    }
+
+    .page-title-sm {
+        font-size: var(--font-size-fluid-1);
+        font-weight: var(--font-weight-4);
+        letter-spacing: var(--font-letterspacing-1);
+        line-height: var(--font-lineheight-00);
+        text-transform: uppercase;
+    }
+
+    .page-title {
+        font-size: var(--font-size-fluid-1);
+        color: var(--color-accent-highlight);
+        text-transform: uppercase;
+        letter-spacing: var(--font-letterspacing-4);
+        font-weight: var(--font-weight-5);
+
+        &::before {
+            content: '#';
+            margin-inline-end: var(--space-xs);
+        }
+    }
+
+    .text-emphasize {
+        max-inline-size: var(--size-content-4);
+        margin-inline: auto;
+        text-align: justify;
+        font-size: var(--font-size-fluid-2);
+        line-height: var(--font-lineheight-2);
+        font-weight: var(--font-weight-5);
+        letter-spacing: var(--font-letterspacing-0);
+        color: var(--text-muted);
+
+        span {
+            color: var(--color-primary-highlight);
+        }
+    }
+
+    .text-descriptions {
+        color: var(--text-muted);
+        font-size: var(--font-size-fluid-2);
+        line-height: var(--font-lineheight-1);
+        font-weight: var(--font-weight-4);
+    }
+
+    .page-container {
+        --flow-space: var(--space-l);
+
+        content-visibility: auto;
+        contain-intrinsic-size: 1280px;
+
+        display: grid;
+        align-items: center;
+        inline-size: min(calc(100% - 2rem), var(--viewport-xl));
+        margin-inline: auto;
+        padding-inline: var(--space-m);
+        padding-block: var(--space-xl);
+
+        &:not(:last-child) {
+            border-block-end: var(--border-subtle);
+        }
+    }
+
+    .contact-content,
+    .form-content {
+        margin-inline: auto;
+        margin-block-start: var(--space-xl);
+        padding-inline: var(--space-m);
+        padding-block: var(--space-m) 0;
+
+        border: var(--border-subtle);
+        border-radius: var(--radius-3);
+        box-shadow: var(--shadow-3);
+    }
+
+    /* Badge */
+    .badge {
+        display: inline-block;
+        margin-block-end: var(--size-4);
+        padding-inline: var(--space-s);
+        padding-block: var(--space-3xs);
+
+        color: var(--text-inverse);
+        font-size: var(--font-size-fluid--3);
+        font-weight: var(--font-weight-8);
+        letter-spacing: var(--font-letterspacing-4);
+        text-align: center;
+        text-transform: uppercase;
+        background-color: var(--color-accent-highlight);
+    }
+
+    /* Media / reel */
+    .media {
+        border-radius: var(--radius-3);
+
+        overflow: hidden;
+    }
+}
+
+/* ==========================================
+    * UTILITIES LAYER
+   ========================================== */
+
+/* Small reusable classes for common patterns */
+@layer utilities {
+
+    /* --- Flow spacing ---
+        Adds space between adjacent siblings
+    */
+    .flow>*+* {
+        margin-block-start: var(--flow-space, var(--size-5));
+    }
+
+    .horizontal-flow>*+* {
+        margin-inline-start: var(--flow-space, var(--size-5));
+    }
+
+    /* Visually hidden (accessibility) */
+    .sr-only {
+        position: absolute;
+        inline-size: 1px;
+        block-size: 1px;
+        margin: -1px;
+
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        overflow: hidden;
+    }
+
+    /* Simple helpers */
+    .text-center {
+        text-align: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .sticky {
+        position: sticky;
+        inset-block-start: 0;
+
+        z-index: var(--z-important);
+    }
+}
+
+/* ==========================================
+    * OVERRIDES LAYER
+   ========================================== */
+
+/* Last-resort styles that intentionally take priority */
+@layer overrides {}
+
+/* ==========================================
+    * PREFERS-REDUCED-MOTION
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ==========================================
+   * CROSS-DOCUMENT VIEW TRANSITIONS
+   ========================================== */
+
+/* @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+    @view-transition {
+        navigation: auto;
+    }
+} */
+@view-transition {
+    navigation: auto;
+}
+
+/* ------------------------------------------
+   * SHARED ELEMENTS
+    -----------------------------------------
+/*
+
+/* TITLE */
+::view-transition-old(contact-title) {
+    animation: fade-out 180ms ease-in both;
+}
+
+::view-transition-new(contact-title) {
+    animation: title-in 450ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+/* IMAGE */
+::view-transition-old(contact-image) {
+    animation: image-out 250ms ease-in both;
+}
+
+::view-transition-new(contact-image) {
+    animation: fade-in-bloom 300ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+/* ------------------------------------------
+   * CUSTOM KEYFRAMES
+   ------------------------------------------ */
+
+@keyframes title-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes image-out {
+    to {
+        opacity: 0;
+        transform: translateX(-6px) scale(0.99);
+    }
+}

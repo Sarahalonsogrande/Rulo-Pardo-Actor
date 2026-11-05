@@ -1,0 +1,18 @@
+/* Syne: Custom display font for accent */
+@font-face {
+    font-family: 'Syne';
+    src: url('../assets/fonts/Syne/Syne-VariableFont_wght.ttf') format('truetype');
+    font-weight: 400 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Roboto Flex: variable display font */
+@font-face {
+    font-family: "Roboto Flex";
+    src: url("../assets/fonts/Roboto-Flex/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf")
+        format("truetype");
+    font-weight: 100 1000;
+    font-style: oblique  -10deg  0deg;
+    font-display: swap;
+}

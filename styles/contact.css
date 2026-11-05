@@ -1,0 +1,46 @@
+.contact-container {
+    background: var(--surface-fade-nested);
+
+    .contact-content {
+        container: contact-content / inline-size;
+
+        inline-size: min(calc(100% - var(--size-4)), var(--viewport-md));
+        margin-block-end: 0;
+
+        .contact-intro {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            .contact-title {
+                view-transition-name: contact-title;
+
+                color: var(--primary-4);
+                font-size: var(--font-size-fluid-3);
+                line-height: var(--font-lineheight-0);
+                font-weight: var(--font-weight-5);
+                letter-spacing: var(--font-letterspacing-0);
+            }
+
+            img {
+                view-transition-name: contact-image;
+
+                position: relative;
+                inline-size: 35cqi;
+                block-size: auto;
+            }
+        }
+
+        @container contact-content (width <= 480px) {
+            .contact-intro {
+                flex-direction: column;
+                gap: var(--space-l);
+                padding-block-start: var(--space-s);
+
+                img {
+                    inline-size: var(--size-14);
+                }
+            }
+        }
+    }
+}
