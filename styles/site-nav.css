@@ -68,7 +68,8 @@
             inset: 0;
             display: grid;
             place-items: center;
-            min-block-size: 100dvh;
+            block-size: 100%;
+            min-block-size: 100%;
             padding: var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left);
 
             background: var(--surface);
@@ -199,6 +200,7 @@
             .nav-menu {
                 position: static;
                 display: block;
+                block-size: auto;
                 min-block-size: auto;
                 padding-inline: 0;
                 padding-block: 0;

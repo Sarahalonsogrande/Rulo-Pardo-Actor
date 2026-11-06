@@ -1,100 +1,50 @@
-/* * --- Hero --- */
+/* ==========================================
+    * * HERO
+   ========================================== */
 
 .hero {
-    content-visibility: auto;
     display: grid;
+    align-items: center;
     block-size: 100svh;
-    block-size: 100dvh;
+    min-block-size: 100svh;
 
     background-color: var(--surface-nested);
-    /* background:
+    background:
         var(--surface-fade-dark),
-        url('../assets/images/teoEncadenado1.jpg'); */
+        url('../assets/images/hero.webp');
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
-/*
-    view-timeline-name: --page-title;
-    view-timeline-axis: block; */
+
+    @media (width >=1024px) {
+        block-size: 100dvh;
+        min-block-size: 100dvh;
+    }
 
     .hero-content {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-end;
-        inline-size: 100%;
+        inline-size: min(100%, var(--viewport-xxl));
         min-inline-size: 0;
         block-size: 100%;
+        margin-inline: auto;
+        padding-inline: var(--size-7);
 
-        overflow: hidden;
-
-        .hero-marquee {
-            display: flex;
-            inline-size: 100%;
-            overflow: hidden;
-            margin-block-start: var(--size-8);
-            padding-block: var(--size-9) var(--size-3);
-
-            .marquee-title {
-                display: flex;
-                flex-shrink: 0;
-                gap: var(--size-8);
-
-                font-family: "Roboto Flex", system-ui, sans-serif;
-                color: var(--text-editorial);
-                font-size: var(--font-size-dramatic);
-                font-weight: var(--font-weight-9);
-                line-height: var(--font-lineheight-00);
-                letter-spacing: var(--font-letterspacing-2);
-                text-transform: uppercase;
-                white-space: nowrap;
-/*
-                animation-name: shrink-text;
-                animation-fill-mode: both;
-                transform-origin: left center;
-                animation-timeline: --page-title;
-                animation-range: exit 0% exit 85%; */
-            }
-
+        .hero-title {
+            font-size: var(--font-size-dramatic);
+            line-height: var(--font-lineheight-00);
+            color: var(--text-editorial);
+            text-transform: uppercase;
+            font-weight: var(--font-weight-9);
+            letter-spacing: var(--font-letterspacing-4);
+            margin-block-end: var(--size-9);
         }
-    }
-}
-/*
-@media (min-width: 768px) and (hover: hover) {
-    .hero {
-        background-attachment: fixed;
-    }
-} */
 
-@media (prefers-reduced-motion: reduce) {
-    .marquee-title {
-        animation: none;
-        transform: none;
-        opacity: 1;
-        /* font-variation-settings: "YTUC" 712; */
-    }
-}
+        .hero-description {
+            justify-self: flex-end;
 
-/* Fallback - No Scroll-Driven Animations */
-@supports not (animation-timeline: view()) {
-    .marquee-title {
-        animation: none;
-        transform: none;
-        opacity: 1;
-    }
-}
-
-@keyframes shrink-text {
-    from {
-        transform: scaleY(1.5) translateX(0);
-        /* font-variation-settings: "YTUC" 760; */
-        opacity: 1;
-    }
-
-    to {
-        transform: scaleY(0.75) translateX(-30%);
-        /* font-variation-settings: "YTUC" 528; */
-        letter-spacing: var(--font-letterspacing-0);
-        opacity: 0.12;
+            color: var(--text-muted);
+            font-size: var(--font-size-fluid-2);
+            line-height: var(--font-lineheight-1);
+            font-weight: var(--font-weight-4);
+        }
     }
 }

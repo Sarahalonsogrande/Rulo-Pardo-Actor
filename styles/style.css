@@ -9,7 +9,7 @@
 @import url('./reset.css') layer(reset);
 @import url('./fonts.css') layer(typography);
 @import url('./buttons.css') layer(components);
-/* @import url('./hero.css') layer(components); */
+@import url('./hero.css') layer(components);
 @import url('./site-nav.css') layer(components);
 @import url('./gallery.css') layer(components);
 @import url('./works.css') layer(components);
@@ -182,47 +182,6 @@
 
 /* Styles for reusable interface components */
 @layer components {
-
-    /* Hero */
-    .hero {
-        display: grid;
-        align-items: center;
-        block-size: 100dvh;
-
-        background:
-            linear-gradient(to bottom,
-                rgba(16, 20, 20, 0.1),
-                rgba(16, 20, 20, 1)) top / cover no-repeat local,
-            url('../assets/images/teoEncadenado1.jpg') top / cover no-repeat fixed;
-
-        .hero-content {
-            inline-size: min(100%, var(--viewport-xxl));
-            margin-inline: auto;
-            padding-inline: var(--size-7);
-
-            h1 {
-                font-size: var(--font-size-dramatic);
-                line-height: var(--font-lineheight-00);
-                color: var(--text-editorial);
-                text-transform: uppercase;
-                font-weight: var(--font-weight-9);
-                letter-spacing: var(--font-letterspacing-4);
-                margin-block-end: var(--size-9);
-            }
-
-            .hero-description {
-                display: flex;
-                justify-self: flex-end;
-
-                color: var(--text-muted);
-                font-size: var(--font-size-fluid-2);
-                line-height: var(--font-lineheight-1);
-                font-weight: var(--font-weight-4);
-
-            }
-        }
-    }
-
     .page-title-sm {
         font-size: var(--font-size-fluid-1);
         font-weight: var(--font-weight-4);
