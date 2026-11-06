@@ -169,7 +169,7 @@
     * TABLET
    ========================================== */
 
-@media (width >= 768px) {
+@media (width >=768px) {
     .navbar {
         .navbar-content {
 
@@ -201,6 +201,8 @@
                     gap: var(--space-m);
 
                     li {
+                        opacity: 1;
+                        transform: none;
 
                         a {
                             position: relative;
