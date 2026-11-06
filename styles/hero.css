@@ -3,25 +3,42 @@
    ========================================== */
 
 .hero {
+    position: relative;
     display: grid;
     align-items: center;
     block-size: 100svh;
     min-block-size: 100svh;
+    overflow: hidden;
 
-    background-color: var(--surface-nested);
-    background:
-        var(--surface-fade-dark),
-        url('../assets/images/hero.webp');
-    background-position: top;
-    background-size: cover;
-    background-repeat: no-repeat;
+    &::before {
+        position: absolute;
+        content: "";
+        inset: 0;
+        block-size: 110%;
+
+        background-color: var(--surface-nested);
+        background:
+            var(--surface-fade-dark),
+            url('../assets/images/hero.webp');
+        background-position: top;
+        background-size: cover;
+        background-repeat: no-repeat;
+        /* background-attachment: scroll; */
+
+        z-index: 0;
+    }
 
     @media (width >=1024px) {
         block-size: 100dvh;
         min-block-size: 100dvh;
+
+        &::before {
+            block-size: 100%;
+        }
     }
 
     .hero-content {
+        position: relative;
         inline-size: min(100%, var(--viewport-xxl));
         min-inline-size: 0;
         block-size: 100%;
