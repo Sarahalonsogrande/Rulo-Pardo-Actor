@@ -166,9 +166,10 @@
 }
 
 /* ==========================================
-    * TABLET BLOCK ( viewport-md )
+    * TABLET
    ========================================== */
-@media (min-width: 768px) {
+
+@media (width >= 768px) {
     .navbar {
         .navbar-content {
 

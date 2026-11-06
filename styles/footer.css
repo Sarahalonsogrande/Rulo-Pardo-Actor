@@ -1,13 +1,20 @@
+/* ==========================================
+    * * FOOTER (BASE / MOBILE FIRST)
+   ========================================== */
+
 .footer {
-    /* min-block-size: 30dvh; */
     padding-inline: var(--space-xl);
     padding-block-start: var(--space-l);
 
     background-color: var(--surface-nested);
 
     .footer-content {
+        container-name: footer-container;
+        container-type: inline-size;
+
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-items: center;
         gap: var(--space-m);
         max-inline-size: var(--viewport-xl);
         margin-inline: auto;
@@ -37,17 +44,35 @@
         }
 
         .footer-intro {
-            align-items: flex-start;
+            grid-column: 1 / -1;
+            inline-size: 100%;
+        }
 
-            a {
+        @container footer-container (width <=1024px) {
+            .footer-intro {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
                 gap: var(--space-s);
+                padding-block-end: var(--space-s);
+                border-block-end: var(--border-subtle);
 
-                font-size: var(--font-size-fluid--1);
-
-                &:hover {
-                    color: var(--action-primary);
+                span {
+                    grid-column: 1 / -1;
                 }
 
+                h3 {
+                    grid-column: 1;
+                    justify-self: center;
+                }
+
+                a {
+                    justify-self: center;
+                    font-size: var(--font-size-fluid--1);
+
+                    &:hover {
+                        color: var(--action-primary);
+                    }
+                }
             }
         }
 
@@ -76,29 +101,15 @@
     }
 
     /* ==========================================
-        * TABLET BLOCK (viewport-md / viewport-lg )
+        * DESKTOP
        ========================================== */
-    @media (min-width: 768px) and (max-width: 1023px) {
-        .footer-content {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-
-            gap: var(--space-m);
-
-            .footer-intro {
-                grid-column: 1 / -1;
-            }
-        }
-    }
-
-    /* ==========================================
-        * DESKTOP BLOCK ( viewport-lg )
-       ========================================== */
-    @media (min-width: 1024px) {
+    @media (width >=1024px) {
         .footer-content {
             grid-template-columns: repeat(3, minmax(0, 1fr));
             justify-items: center;
 
             .footer-intro {
+                grid-template-columns: 1fr;
                 grid-column: auto;
             }
         }

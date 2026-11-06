@@ -37,6 +37,10 @@
         }
     }
 
+    .hero-meta {
+        z-index: var(--z-1);
+    }
+    
     .hero-content {
         position: relative;
         inline-size: 100%;
