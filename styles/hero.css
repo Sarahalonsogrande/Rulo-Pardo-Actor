@@ -39,7 +39,8 @@
 
     .hero-content {
         position: relative;
-        inline-size: min(100%, var(--viewport-xxl));
+        inline-size: 100%;
+        max-inline-size: var(--viewport-xxl);
         min-inline-size: 0;
         block-size: 100%;
         margin-inline: auto;

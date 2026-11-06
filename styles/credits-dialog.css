@@ -116,7 +116,8 @@
         * DESKTOP BLOCK ( viewport-lg )
      ========================================== */
     @media (min-width: 768px) {
-        inline-size: min(90vw, var(--viewport-lg));
+        inline-size: 90vw;
+        max-inline-size: var(--viewport-lg);
 
         .credits-header,
         .credits-content {

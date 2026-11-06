@@ -23,7 +23,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        max-inline-size: min(100%, var(--viewport-xxl));
+        inline-size: 100%;
+        max-inline-size: var(--viewport-xxl);
         margin-inline: auto;
 
         .logo-img {
@@ -92,6 +93,12 @@
                 text-align: center;
 
                 li {
+                    opacity: 0;
+
+                    transform: translateY(calc(var(--size-4) * -1));
+                    transition: transform var(--duration-moderate-2) var(--ease-2),
+                        opacity var(--duration-moderate-2) var(--ease-2);
+
                     a {
                         display: block;
                         padding-inline: var(--space-xs);
@@ -102,13 +109,8 @@
                         font-weight: var(--font-weight-6);
                         text-decoration: none;
                         text-transform: uppercase;
-                        opacity: 0;
 
-                        transform: translateY(calc(var(--size-4) * -1));
-                        transition:
-                            transform var(--duration-moderate-2) var(--ease-2),
-                            opacity var(--duration-moderate-2) var(--ease-2),
-                            color var(--duration-quick-1) var(--ease-2);
+                        transition: color var(--duration-quick-1) var(--ease-2);
 
                         &.active,
                         &:hover {
@@ -130,29 +132,13 @@
                     opacity var(--duration-moderate-2) var(--ease-2),
                     visibility 0s linear 0s;
 
-                a {
-                    opacity: 1;
-
-                    transform: translateY(0);
-                }
-
                 ul {
 
-                    /* Staggered animation delays for mobile links */
-                    li:nth-child(1) a {
-                        transition-delay: var(--duration-quick-2);
-                    }
-
-                    li:nth-child(2) a {
-                        transition-delay: var(--duration-moderate-1);
-                    }
-
-                    li:nth-child(3) a {
-                        transition-delay: var(--duration-moderate-2);
-                    }
-
-                    li:nth-child(4) a {
-                        transition-delay: var(--duration-gentle-1);
+                    li {
+                        opacity: 1;
+                        transform: translateY(0);
+                        /* Staggered animation delays for mobile links */
+                        transition-delay: calc((sibling-index() - 1) * var(--duration-quick-1));
                     }
                 }
             }
@@ -200,7 +186,7 @@
                 position: static;
                 display: block;
                 block-size: auto;
-                min-block-size: auto;
+                min-block-size: initial;
                 padding-inline: 0;
                 padding-block: 0;
 
@@ -258,7 +244,7 @@
     .navbar {
 
         .nav-menu,
-        .nav-menu a,
+        .nav-menu li,
         .hamburger span,
         .nav-menu a::after {
             transition: none;
