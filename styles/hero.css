@@ -23,7 +23,6 @@
         background-position: top;
         background-size: cover;
         background-repeat: no-repeat;
-        /* background-attachment: scroll; */
 
         z-index: 0;
     }
@@ -40,7 +39,7 @@
     .hero-meta {
         z-index: var(--z-1);
     }
-    
+
     .hero-content {
         position: relative;
         inline-size: 100%;

@@ -243,6 +243,13 @@
         }
     }
 
+    .path-content {
+
+        img {
+            inline-size: 100%;
+        }
+    }
+
     .contact-content,
     .form-content {
         margin-inline: auto;
